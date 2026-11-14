@@ -405,7 +405,7 @@
       canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);
       canvas.style.width=w+'px';canvas.style.height=h+'px';
       ctx.setTransform(dpr,0,0,dpr,0,0);
-      points=Array.from({length:mobile?22:38},()=>({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.28,vy:(Math.random()-.5)*.28,r:.65+Math.random()*.55}));
+      points=Array.from({length:mobile?32:60},()=>({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.28,vy:(Math.random()-.5)*.28,r:.65+Math.random()*.55}));
     };
     const pointer=e=>{
       mx=e.clientX;my=e.clientY;
