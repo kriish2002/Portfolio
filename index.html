@@ -288,7 +288,7 @@
     const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target);}}),{threshold:.12});
     document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 
-    // Golden cursor trail + layered firework bursts (desktop only).
+    // Always-on ambient gold particles with occasional soft mini-fireworks.
     (() => {
       const canvas=document.getElementById('sparkCanvas'),ctx=canvas&&canvas.getContext('2d');
       const progress=document.getElementById('scrollProgress');
@@ -296,41 +296,37 @@
       const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       const coarse=window.matchMedia('(pointer: coarse)').matches;
       const particles=[],rings=[];
-      let w=0,h=0,dpr=1,raf=0,lastTrail=0;
-      const resize=()=>{dpr=Math.min(devicePixelRatio||1,1.6);w=innerWidth;h=innerHeight;canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);ctx.setTransform(dpr,0,0,dpr,0,0)};
-      const spark=(x,y,vx,vy,life,size,glow=9)=>particles.push({x,y,px:x,py:y,vx,vy,life,max:life,size,glow,twinkle:Math.random()*.8+.5});
-      const firework=(x,y,power=1)=>{
-        const count=Math.round(62*power);
-        for(let i=0;i<count;i++){const a=Math.PI*2*i/count+(Math.random()-.5)*.08,s=(1.3+Math.random()*4.7)*power;
-          spark(x,y,Math.cos(a)*s,Math.sin(a)*s,42+Math.random()*34,.8+Math.random()*2.1,12);
-        }
-        for(let i=0;i<18;i++){const a=Math.PI*2*i/18,s=(2+Math.random()*1.8)*power;spark(x,y,Math.cos(a)*s,Math.sin(a)*s,58+Math.random()*22,1.2+Math.random()*1.3,16)}
-        rings.push({x,y,r:2,life:25,max:25});
+      let w=0,h=0,dpr=1,raf=0,lastTrail=0,lastBurst=0;
+      const ambientCount=coarse?22:42;
+      const resize=()=>{dpr=Math.min(devicePixelRatio||1,coarse?1:1.5);w=innerWidth;h=innerHeight;canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);ctx.setTransform(dpr,0,0,dpr,0,0)};
+      const spark=(x,y,vx,vy,life,size,glow=7,ambient=false)=>particles.push({x,y,px:x,py:y,vx,vy,life,max:life,size,glow,twinkle:Math.random()*.6+.4,ambient});
+      const seedAmbient=()=>{for(let i=0;i<ambientCount;i++)spark(Math.random()*w,Math.random()*h,(Math.random()-.5)*.22,-(.12+Math.random()*.35),160+Math.random()*260,.45+Math.random()*.8,5,true)};
+      const firework=(x,y,power=.55)=>{
+        const count=Math.round(24*power);
+        for(let i=0;i<count;i++){const a=Math.PI*2*i/count,s=(.6+Math.random()*2.2)*power;spark(x,y,Math.cos(a)*s,Math.sin(a)*s,35+Math.random()*25,.6+Math.random()*1.2,9)}
+        rings.push({x,y,r:2,life:22,max:22});
       };
-      const pointer=e=>{const now=performance.now();if(now-lastTrail<10)return;lastTrail=now;
-        const dx=(Math.random()-.5)*1.2,dy=-.25-Math.random()*1.1;
-        spark(e.clientX,e.clientY,dx,dy,22+Math.random()*20,.65+Math.random()*1.3,8);
-        if(Math.random()>.58)spark(e.clientX,e.clientY,(Math.random()-.5)*2,(Math.random()-.5)*2,16+Math.random()*14,.6+Math.random(),6);
-      };
-      const click=e=>{firework(e.clientX,e.clientY,1);setTimeout(()=>firework(e.clientX+(Math.random()-.5)*54,e.clientY+(Math.random()-.5)*44,.52),95)};
-      const draw=()=>{
+      const pointer=e=>{const now=performance.now();if(now-lastTrail<24)return;lastTrail=now;spark(e.clientX,e.clientY,(Math.random()-.5)*.7,-.25-Math.random()*.7,20+Math.random()*16,.7+Math.random()*.7,7)};
+      const click=e=>firework(e.clientX,e.clientY,.95);
+      const draw=now=>{
         ctx.clearRect(0,0,w,h);
+        if(!reduced&&now-lastBurst>(coarse?5200:3600)){lastBurst=now;firework(w*(.16+Math.random()*.68),h*(.14+Math.random()*.68),coarse?.45:.62)}
+        if(!reduced&&particles.length<ambientCount+90&&Math.random()>.82)spark(Math.random()*w,h+4,(Math.random()-.5)*.18,-(.35+Math.random()*.55),180+Math.random()*180,.5+Math.random()*.7,6,true);
         for(let i=particles.length-1;i>=0;i--){
-          const p=particles[i];p.px=p.x;p.py=p.y;p.x+=p.vx;p.y+=p.vy;p.vy+=.045;p.vx*=.986;p.life--;
+          const p=particles[i];p.px=p.x;p.py=p.y;p.x+=p.vx;p.y+=p.vy;p.vy+=p.ambient?0:.025;p.vx*=p.ambient?.999:.986;p.life--;
           const a=Math.max(0,p.life/p.max);
-          ctx.save();ctx.globalAlpha=a*p.twinkle;ctx.strokeStyle='#f6d995';ctx.fillStyle='#fff1c5';ctx.shadowColor='#e4b755';ctx.shadowBlur=p.glow;
-          ctx.lineWidth=p.size;ctx.beginPath();ctx.moveTo(p.px,p.py);ctx.lineTo(p.x,p.y);ctx.stroke();
-          ctx.beginPath();ctx.arc(p.x,p.y,p.size*.65,0,Math.PI*2);ctx.fill();ctx.restore();
-          if(p.life<=0)particles.splice(i,1);
+          ctx.save();ctx.globalAlpha=a*p.twinkle*(p.ambient?.55:1);ctx.strokeStyle=p.ambient?'#d7b66d':'#f6d995';ctx.fillStyle='#fff1c5';ctx.shadowColor='#e4b755';ctx.shadowBlur=p.glow;
+          ctx.lineWidth=p.size;ctx.beginPath();ctx.moveTo(p.px,p.py);ctx.lineTo(p.x,p.y);ctx.stroke();ctx.beginPath();ctx.arc(p.x,p.y,p.size*.7,0,Math.PI*2);ctx.fill();ctx.restore();
+          if(p.life<=0||p.y<-10||p.x<-10||p.x>w+10){if(p.ambient&&!reduced){p.x=Math.random()*w;p.y=h+Math.random()*20;p.vx=(Math.random()-.5)*.22;p.vy=-(.12+Math.random()*.35);p.life=p.max=180+Math.random()*260}else particles.splice(i,1)}
         }
-        for(let i=rings.length-1;i>=0;i--){const r=rings[i];r.r+=3.1;r.life--;ctx.save();ctx.globalAlpha=Math.max(0,r.life/r.max)*.55;ctx.strokeStyle='#e9c36f';ctx.lineWidth=1.2;ctx.shadowColor='#d9aa4e';ctx.shadowBlur=12;ctx.beginPath();ctx.arc(r.x,r.y,r.r,0,Math.PI*2);ctx.stroke();ctx.restore();if(r.life<=0)rings.splice(i,1)}
-        if(particles.length||rings.length)raf=requestAnimationFrame(draw);else raf=0;
+        for(let i=rings.length-1;i>=0;i--){const r=rings[i];r.r+=2.1;r.life--;ctx.save();ctx.globalAlpha=Math.max(0,r.life/r.max)*.38;ctx.strokeStyle='#e9c36f';ctx.lineWidth:1;ctx.shadowColor='#d9aa4e';ctx.shadowBlur:9;ctx.beginPath();ctx.arc(r.x,r.y,r.r,0,Math.PI*2);ctx.stroke();ctx.restore();if(r.life<=0)rings.splice(i,1)}
+        raf=requestAnimationFrame(draw);
       };
-      const wake=()=>{if(!raf)raf=requestAnimationFrame(draw)};
-      resize();addEventListener('resize',resize,{passive:true});
-      if(!reduced&&!coarse){addEventListener('pointermove',pointer,{passive:true});addEventListener('click',click,{passive:true});addEventListener('pointermove',wake,{passive:true});addEventListener('click',wake,{passive:true})}
+      resize();seedAmbient();addEventListener('resize',resize,{passive:true});
+      if(!reduced&&!coarse){addEventListener('pointermove',pointer,{passive:true});addEventListener('click',click,{passive:true})}
       const scroll=()=>{if(progress){const max=document.documentElement.scrollHeight-innerHeight;progress.style.width=(max>0?scrollY/max*100:0)+'%'}};
       addEventListener('scroll',scroll,{passive:true});scroll();
+      if(!reduced)raf=requestAnimationFrame(draw);
     })();
 
   </script>
