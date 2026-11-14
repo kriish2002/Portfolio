@@ -292,9 +292,19 @@
     @media(max-width:850px){#about .about-grid{grid-template-columns:1fr!important;gap:28px!important}#about .info-list{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
     @media(max-width:520px){#about{padding:76px 0!important}#about .info-list{grid-template-columns:1fr!important}#about .info-item{min-height:unset!important}}
 
+  
+    /* Minimal cinematic intro sound control */
+    .intro-sound{position:fixed;right:22px;bottom:22px;z-index:120;display:flex;align-items:center;gap:8px;padding:10px 13px;border:1px solid rgba(220,184,112,.35);border-radius:999px;background:rgba(15,14,11,.88);backdrop-filter:blur(12px);color:#e8d4a7;font:600 11px "DM Mono",monospace;letter-spacing:.08em;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.18);transition:all .25s}
+    .intro-sound:hover{border-color:#dfbd78;transform:translateY(-2px)}
+    .intro-sound .sound-dot{width:7px;height:7px;border-radius:50%;background:#b99a5c;box-shadow:0 0 9px rgba(220,184,112,.6)}
+    .intro-sound[aria-pressed="true"] .sound-dot{background:#e5c77f}
+    @media(max-width:650px){.intro-sound{right:14px;bottom:14px}}
+
   </style>
 </head>
 <body>
+  <button class="intro-sound" id="introSound" type="button" aria-label="Play intro sound" aria-pressed="false"><span class="sound-dot"></span><span id="soundLabel">INTRO SOUND</span></button>
+
   <div class="scroll-progress" id="scrollProgress"></div>
   <div class="network-glow glow-left"></div><div class="network-glow glow-right"></div>
 
@@ -507,6 +517,52 @@
     resize();addEventListener('resize',resize,{passive:true});
     addEventListener('pointermove',pointer,{passive:true});
     requestAnimationFrame(draw);
+  })();
+  </script>
+
+
+  <script>
+  // Original, short champagne-style startup chime. Browsers may require a user gesture.
+  (() => {
+    const btn=document.getElementById('introSound');
+    const label=document.getElementById('soundLabel');
+    if(!btn)return;
+    let audio=null,played=false,enabled=false;
+    const playChime=()=>{
+      const AudioCtx=window.AudioContext||window.webkitAudioContext;
+      if(!AudioCtx)return;
+      audio=audio||new AudioCtx();
+      if(audio.state==='suspended')audio.resume();
+      const now=audio.currentTime;
+      const master=audio.createGain();
+      master.gain.setValueAtTime(.0001,now);
+      master.gain.exponentialRampToValueAtTime(.075,now+.07);
+      master.gain.exponentialRampToValueAtTime(.0001,now+2.1);
+      master.connect(audio.destination);
+      // Three soft, original bell-like notes with a warm harmonic tail.
+      [659.25,830.61,987.77].forEach((freq,i)=>{
+        const osc=audio.createOscillator(),gain=audio.createGain();
+        const t=now+.08+i*.19;
+        osc.type='sine';osc.frequency.setValueAtTime(freq,t);
+        gain.gain.setValueAtTime(.0001,t);
+        gain.gain.exponentialRampToValueAtTime(i===2?.45:.28,t+.035);
+        gain.gain.exponentialRampToValueAtTime(.0001,t+1.45);
+        osc.connect(gain);gain.connect(master);
+        osc.start(t);osc.stop(t+1.5);
+      });
+      played=true;
+      btn.setAttribute('aria-pressed','true');
+      label.textContent='SOUND ON';
+    };
+    btn.addEventListener('click',()=>{
+      enabled=!enabled;
+      if(enabled){playChime();}else{btn.setAttribute('aria-pressed','false');label.textContent='INTRO SOUND';}
+    });
+    // Try once on page load; if autoplay is blocked, the visible control enables it.
+    window.addEventListener('load',()=>{
+      try{playChime();}catch(e){label.textContent='ENABLE SOUND';}
+      if(!played)label.textContent='ENABLE SOUND';
+    },{once:true});
   })();
   </script>
 
