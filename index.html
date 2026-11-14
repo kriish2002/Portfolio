@@ -145,17 +145,49 @@
     @media(max-width:650px){.ambient-blob{filter:blur(65px);opacity:.13}}
     @media(prefers-reduced-motion:reduce){.ambient-blob{animation:none!important}}
 
+
+    /* Clean white + violet constellation visual, matching the supplied reference video */
+    :root{--bg:#fbfbff;--panel:#fff;--panel2:#f5f5ff;--line:rgba(87,91,190,.15);--text:#15182b;--muted:#687087;--blue:#5d5fe8;--cyan:#8585ff;--max:1200px}
+    html,body{background:#fff!important;color:#17192b!important;font-family:"Plus Jakarta Sans",sans-serif}
+    body:before{display:none!important}
+    #networkCanvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:.85}
+    .network-glow{position:fixed;width:380px;height:380px;border-radius:50%;filter:blur(90px);pointer-events:none;z-index:0;opacity:.15}
+    .glow-left{left:-150px;top:18%;background:#777bff;animation:violetDrift 18s ease-in-out infinite alternate}
+    .glow-right{right:-160px;top:42%;background:#a5a0ff;animation:violetDrift 23s ease-in-out infinite alternate-reverse}
+    @keyframes violetDrift{to{transform:translate3d(100px,-55px,0) scale(1.2)}}
+    body>*:not(#networkCanvas):not(.network-glow){position:relative;z-index:1}
+    .nav,.nav.scrolled{background:rgba(255,255,255,.88)!important;border-bottom:1px solid #ececf5;backdrop-filter:blur(18px)}
+    .brand{color:#17192b!important;font-size:1.05rem;letter-spacing:-.055em}.brand span{color:#5e60e8!important}
+    .nav-links{color:#4e536a}.nav-links a:hover{color:#5e60e8}.nav-cta{background:#5d5fe8;color:#fff;border:1px solid #5d5fe8;border-radius:7px}
+    .hero,.hero-network{min-height:710px;padding:150px 0 100px;background:transparent!important;isolation:isolate}
+    .hero:before{display:none!important}.hero-grid.hero-centered{display:flex;justify-content:center;align-items:center;text-align:center;max-width:1000px}
+    .hero-centered .hero-content{max-width:880px;margin:auto}.hero-kicker{color:#6869d9;letter-spacing:.16em}
+    .status{display:inline-flex;background:#f3f3ff;border:1px solid #e3e3ff;color:#5254c9;border-radius:99px}
+    .pulse{background:#6869e9;box-shadow:0 0 0 5px rgba(104,105,233,.12)}
+    .hero h1{font-size:clamp(2.8rem,6.2vw,5.1rem);line-height:1.08;letter-spacing:-.065em;color:#15182b;margin:14px auto 20px}
+    .hero h1 span{background:linear-gradient(100deg,#5558df,#8881ff);background-clip:text;-webkit-background-clip:text;color:transparent}
+    .hero-sub{color:#41445b;font-size:1.1rem;font-weight:650}.hero-copy{color:#6b7083;max-width:720px;margin:0 auto;line-height:1.85}.hero-copy strong{color:#4f51c8}
+    .hero-centered .actions{justify-content:center}.btn{border-radius:7px}.btn-primary{background:#5d5fe8;color:#fff;box-shadow:0 10px 26px rgba(93,95,232,.2)}.btn-ghost{background:#fff;border:1px solid #dfe0f0;color:#454861}
+    .hero-proof{justify-content:center;color:#777d91}.hero-proof i{background:#7778e8}
+    .hero-scroll{color:#7778e8}.scroll-progress{background:#6567e9}
+    .section-head h2{color:#17192b}.skill-card,.project-card,.cert-card,.edu-card,.timeline-card,.info-item,.metric,.contact-panel{background:rgba(255,255,255,.9)!important;border:1px solid #e8e8f2!important;color:#17192b;box-shadow:0 12px 35px rgba(35,38,90,.045)}
+    .skill-card p,.project-card p,.cert-card p,.timeline-card p,.info-item p{color:#697087}
+    .chip{background:#f2f2ff;border:1px solid #e2e2ff;color:#5558c9}.project-art{background:linear-gradient(135deg,#f0efff,#e7e8ff)!important;color:#5d5fe8}
+    .metric strong{color:#5d5fe8}.contact-panel{border-radius:12px}.footer{color:#73788b}
+    @media(max-width:700px){.hero,.hero-network{min-height:650px;padding:130px 0 75px}.hero h1{font-size:clamp(2.5rem,11vw,3.6rem)}.hero-proof{gap:8px;font-size:.58rem}.network-glow{width:260px;height:260px}}
+    @media(prefers-reduced-motion:reduce){.network-glow{animation:none!important}}
+
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
   </style>
 </head>
 <body>
   <div class="scroll-progress" id="scrollProgress"></div>
-  <div class="ambient-blobs" aria-hidden="true"><span class="ambient-blob blob-a"></span><span class="ambient-blob blob-b"></span><span class="ambient-blob blob-c"></span></div>
+  <div class="network-glow glow-left"></div><div class="network-glow glow-right"></div>
 
-  <canvas id="sparkCanvas" aria-hidden="true"></canvas>
+  <canvas id="networkCanvas" aria-hidden="true"></canvas>
   <header class="nav" id="top">
     <div class="container nav-inner">
-      <a class="brand" href="#home">KR<span><b>.</b></span></a>
+      <a class="brand" href="#home">KRISHAN <span><b>RAWAT.</b></span></a>
       <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation" aria-expanded="false">☰</button>
       <nav class="nav-links" id="navLinks" aria-label="Main navigation">
         <a href="#about">About</a><a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#education">Education</a><a href="#contact">Contact</a>
@@ -165,23 +197,16 @@
   </header>
 
   <main>
-    <section class="hero" id="home">
-      <div class="hero-glow hero-glow-one"></div><div class="hero-glow hero-glow-two"></div>
-      <div class="container hero-grid">
+    <section class="hero hero-network" id="home">
+      <div class="container hero-grid hero-centered">
         <div class="hero-content">
           <div class="status"><i class="pulse"></i> OPEN TO DEVOPS OPPORTUNITIES</div>
           <p class="eyebrow hero-kicker">CLOUD ENGINEERING · AUTOMATION · DEVSECOPS</p>
-          <h1>Building cloud systems.<br><span>Making delivery simpler.</span></h1>
-          <p class="hero-sub">Hi, I’m Krishan — DevOps &amp; Cloud Infrastructure Engineer.</p>
+          <h1>Hi, I’m <span>Krishan Kumar Rawat.</span><br>Building reliable cloud infrastructure.</h1>
+          <p class="hero-sub">DevOps &amp; Cloud Infrastructure Engineer</p>
           <p class="hero-copy">I turn infrastructure into repeatable code, streamline CI/CD workflows and help teams ship with confidence. My hands-on experience is focused on <strong>Microsoft Azure, Terraform and Azure DevOps.</strong></p>
           <div class="actions"><a class="btn btn-primary" href="#projects">Explore my work ↗</a><a class="btn btn-ghost" href="resume.html" target="_blank" rel="noopener">View resume ↗</a></div>
           <div class="hero-proof"><span>Based in India</span><i></i><span>1.5+ years experience</span><i></i><span>Azure · Terraform · CI/CD</span></div>
-        </div>
-        <div class="hero-visual hero-visual-new hero-visual-no-photo" aria-label="Profile and cloud infrastructure illustration">
-          <div class="visual-grid"></div><div class="orbit"></div>
-          
-          <div class="infra-panel"><div class="infra-top"><span class="infra-dot"></span><span>INFRASTRUCTURE OVERVIEW</span><span class="infra-live">● LIVE</span></div><div class="infra-cloud">☁ <span>AZURE CLOUD</span></div><div class="infra-branches"><i></i><i></i><i></i></div><div class="infra-nodes"><span>Terraform</span><span>CI / CD</span><span>Security</span></div><div class="infra-footer"><b>DEPLOYMENT PIPELINE</b><span>PLAN → VALIDATE → DEPLOY</span></div></div>
-          
         </div>
       </div><div class="hero-scroll">SCROLL TO EXPLORE ↓</div>
     </section>
@@ -305,46 +330,32 @@
     const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target);}}),{threshold:.12});
     document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 
-    // Always-on ambient gold particles with occasional soft mini-fireworks.
+    // Reference-style animated constellation network: drifting nodes, connecting lines and soft purple glows.
     (() => {
-      const canvas=document.getElementById('sparkCanvas'),ctx=canvas&&canvas.getContext('2d');
-      const progress=document.getElementById('scrollProgress');
+      const canvas=document.getElementById('networkCanvas'),ctx=canvas&&canvas.getContext('2d');
       if(!canvas||!ctx)return;
-      const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const coarse=window.matchMedia('(pointer: coarse)').matches;
-      const particles=[],rings=[];
-      let w=0,h=0,dpr=1,raf=0,lastTrail=0,lastBurst=0;
-      const ambientCount=coarse?22:42;
-      const resize=()=>{dpr=Math.min(devicePixelRatio||1,coarse?1:1.5);w=innerWidth;h=innerHeight;canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);ctx.setTransform(dpr,0,0,dpr,0,0)};
-      const spark=(x,y,vx,vy,life,size,glow=7,ambient=false)=>particles.push({x,y,px:x,py:y,vx,vy,life,max:life,size,glow,twinkle:Math.random()*.6+.4,ambient});
-      const seedAmbient=()=>{for(let i=0;i<ambientCount;i++)spark(Math.random()*w,Math.random()*h,(Math.random()-.5)*.22,-(.12+Math.random()*.35),160+Math.random()*260,.45+Math.random()*.8,5,true)};
-      const firework=(x,y,power=.55)=>{
-        const count=Math.round(24*power);
-        for(let i=0;i<count;i++){const a=Math.PI*2*i/count,s=(.6+Math.random()*2.2)*power;spark(x,y,Math.cos(a)*s,Math.sin(a)*s,35+Math.random()*25,.6+Math.random()*1.2,9)}
-        rings.push({x,y,r:2,life:22,max:22});
-      };
-      const pointer=e=>{const now=performance.now();if(now-lastTrail<24)return;lastTrail=now;spark(e.clientX,e.clientY,(Math.random()-.5)*.7,-.25-Math.random()*.7,20+Math.random()*16,.7+Math.random()*.7,7)};
-      const click=e=>firework(e.clientX,e.clientY,.95);
-      const draw=now=>{
+      const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const mobile=matchMedia('(max-width: 700px)').matches;
+      let w=0,h=0,dpr=1,nodes=[],raf=0;
+      const count=mobile?34:68;
+      const resize=()=>{w=innerWidth;h=innerHeight;dpr=Math.min(devicePixelRatio||1,1.5);canvas.width=w*dpr;canvas.height=h*dpr;canvas.style.width=w+'px';canvas.style.height=h+'px';ctx.setTransform(dpr,0,0,dpr,0,0);nodes=Array.from({length:count},()=>({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.34,vy:(Math.random()-.5)*.34,r:Math.random()*1.7+.7,phase:Math.random()*Math.PI*2}))};
+      const draw=()=>{
         ctx.clearRect(0,0,w,h);
-        if(!reduced&&now-lastBurst>(coarse?5200:3600)){lastBurst=now;firework(w*(.16+Math.random()*.68),h*(.14+Math.random()*.68),coarse?.45:.62)}
-        if(!reduced&&particles.length<ambientCount+90&&Math.random()>.82)spark(Math.random()*w,h+4,(Math.random()-.5)*.18,-(.35+Math.random()*.55),180+Math.random()*180,.5+Math.random()*.7,6,true);
-        for(let i=particles.length-1;i>=0;i--){
-          const p=particles[i];p.px=p.x;p.py=p.y;p.x+=p.vx;p.y+=p.vy;p.vy+=p.ambient?0:.025;p.vx*=p.ambient?.999:.986;p.life--;
-          const a=Math.max(0,p.life/p.max);
-          ctx.save();ctx.globalAlpha=a*p.twinkle*(p.ambient?.55:1);ctx.strokeStyle=p.ambient?'#d7b66d':'#f6d995';ctx.fillStyle='#fff1c5';ctx.shadowColor='#e4b755';ctx.shadowBlur=p.glow;
-          ctx.lineWidth=p.size;ctx.beginPath();ctx.moveTo(p.px,p.py);ctx.lineTo(p.x,p.y);ctx.stroke();ctx.beginPath();ctx.arc(p.x,p.y,p.size*.7,0,Math.PI*2);ctx.fill();ctx.restore();
-          if(p.life<=0||p.y<-10||p.x<-10||p.x>w+10){if(p.ambient&&!reduced){p.x=Math.random()*w;p.y=h+Math.random()*20;p.vx=(Math.random()-.5)*.22;p.vy=-(.12+Math.random()*.35);p.life=p.max=180+Math.random()*260}else particles.splice(i,1)}
+        for(let i=0;i<nodes.length;i++){
+          const p=nodes[i];if(!reduced){p.x+=p.vx;p.y+=p.vy;p.phase+=.018;if(p.x<0||p.x>w)p.vx*=-1;if(p.y<0||p.y>h)p.vy*=-1}
+          const pulse=.55+Math.sin(p.phase)*.25;
+          for(let j=i+1;j<nodes.length;j++){
+            const q=nodes[j],dx=p.x-q.x,dy=p.y-q.y,d=Math.hypot(dx,dy);
+            if(d<mobile?105:145){ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.strokeStyle='rgba(105,112,235,'+((1-d/(mobile?105:145))*.23)+')';ctx.lineWidth=.7;ctx.stroke()}
+          }
+          ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle='rgba(103,112,245,'+pulse+')';ctx.shadowColor='#777bff';ctx.shadowBlur=8;ctx.fill();ctx.shadowBlur=0;
         }
-        for(let i=rings.length-1;i>=0;i--){const r=rings[i];r.r+=2.1;r.life--;ctx.save();ctx.globalAlpha=Math.max(0,r.life/r.max)*.38;ctx.strokeStyle='#e9c36f';ctx.lineWidth:1;ctx.shadowColor='#d9aa4e';ctx.shadowBlur:9;ctx.beginPath();ctx.arc(r.x,r.y,r.r,0,Math.PI*2);ctx.stroke();ctx.restore();if(r.life<=0)rings.splice(i,1)}
         raf=requestAnimationFrame(draw);
       };
-      resize();seedAmbient();addEventListener('resize',resize,{passive:true});
-      if(!reduced&&!coarse){addEventListener('pointermove',pointer,{passive:true});addEventListener('click',click,{passive:true})}
-      const scroll=()=>{if(progress){const max=document.documentElement.scrollHeight-innerHeight;progress.style.width=(max>0?scrollY/max*100:0)+'%'}};
-      addEventListener('scroll',scroll,{passive:true});scroll();
-      if(!reduced)raf=requestAnimationFrame(draw);
+      resize();addEventListener('resize',resize,{passive:true});if(!reduced)raf=requestAnimationFrame(draw);else draw();
     })();
+    const progress=document.getElementById('scrollProgress');
+    addEventListener('scroll',()=>{if(progress){const max=document.documentElement.scrollHeight-innerHeight;progress.style.width=(max>0?scrollY/max*100:0)+'%'}},{passive:true});
 
   </script>
 </body>
