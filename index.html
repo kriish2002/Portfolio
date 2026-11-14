@@ -10,10 +10,10 @@
   <title>Krishan Kumar Rawat | DevOps & Cloud Infrastructure Engineer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root{--bg:#070b14;--panel:#0d1422;--panel2:#101b2d;--line:rgba(148,163,184,.16);--text:#edf4ff;--muted:#9aa9bf;--blue:#d6aa50;--cyan:#f1d58a;--max:1160px}
-    *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:88px}body{margin:0;background:var(--bg);color:var(--text);font-family:Manrope,system-ui,sans-serif;line-height:1.7}body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(ellipse at 78% 5%,rgba(185,133,42,.13),transparent 34%),radial-gradient(ellipse at 5% 45%,rgba(185,133,42,.07),transparent 30%),linear-gradient(180deg,#070b14,#080e19 55%,#070b14)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:88px}body{margin:0;background:var(--bg);color:var(--text);font-family:"Plus Jakarta Sans",system-ui,sans-serif;line-height:1.7}body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(ellipse at 78% 5%,rgba(185,133,42,.13),transparent 34%),radial-gradient(ellipse at 5% 45%,rgba(185,133,42,.07),transparent 30%),linear-gradient(180deg,#070b14,#080e19 55%,#070b14)}
     a{color:inherit;text-decoration:none}.container{width:min(var(--max),calc(100% - 44px));margin:auto}.mono,.eyebrow,.tag,.nav-cta{font-family:"DM Mono",monospace}.mono,.eyebrow{color:var(--cyan);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase}.section{padding:104px 0}.section-head{max-width:680px;margin-bottom:42px}.section-head h2{font-size:clamp(2rem,4vw,3rem);line-height:1.12;letter-spacing:-.05em;margin:12px 0}.section-head p{color:var(--muted);margin:0}.accent{color:var(--blue)}
     .nav{position:fixed;z-index:20;top:0;left:0;right:0;border-bottom:1px solid transparent;transition:.25s;background:rgba(7,11,20,.7);backdrop-filter:blur(16px)}.nav.scrolled{border-color:var(--line);background:rgba(7,11,20,.92)}.nav-inner{height:76px;display:flex;align-items:center;justify-content:space-between}.brand{font-weight:800;letter-spacing:-.04em;font-size:1.12rem}.brand b{color:var(--blue)}.nav-links{display:flex;align-items:center;gap:28px;color:#b9c6d8;font-size:.88rem}.nav-links a:hover{color:white}.nav-cta{border:1px solid rgba(78,161,255,.55);padding:10px 16px;border-radius:8px;color:#b9dcff}.menu-btn{display:none;background:none;border:1px solid var(--line);color:white;padding:8px 11px;border-radius:8px;font-size:1.1rem}
     .hero{min-height:790px;padding:150px 0 90px;display:flex;align-items:center;position:relative;overflow:hidden}.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:54px;align-items:center}.status{display:inline-flex;align-items:center;gap:10px;padding:8px 13px;border:1px solid var(--line);border-radius:99px;color:#b7c8dd;background:rgba(13,20,34,.7);font-size:.8rem}.pulse{width:8px;height:8px;border-radius:50%;background:#55df9a;box-shadow:0 0 0 5px rgba(85,223,154,.12)}.hero h1{font-size:clamp(3rem,6.5vw,5.5rem);line-height:1.02;letter-spacing:-.075em;margin:24px 0 16px}.hero h1 span{display:block;color:var(--blue)}.hero-sub{font-size:clamp(1.1rem,2vw,1.4rem);color:#c4d2e4;font-weight:600;margin:0 0 16px}.hero-copy{max-width:650px;color:var(--muted);font-size:1.03rem}.actions{display:flex;gap:13px;flex-wrap:wrap;margin:30px 0}.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:13px 19px;border-radius:9px;font-weight:800;font-size:.9rem;transition:.2s;border:1px solid var(--line)}.btn-primary{background:linear-gradient(110deg,#9e742b,#e7c36d);color:white;border-color:transparent;box-shadow:0 12px 32px rgba(190,145,55,.22)}.btn:hover{transform:translateY(-3px)}.btn-ghost{background:rgba(13,20,34,.65);color:#d9e8fa}.socials{display:flex;gap:20px;color:#91a4bd;font-size:.86rem}.socials a:hover{color:var(--cyan)}
@@ -52,6 +52,35 @@
     .eyebrow,.mono,.timeline-card .date,.edu-card .date{color:#e5c579}
     .reveal{transition:opacity .7s ease,transform .7s cubic-bezier(.2,.75,.25,1)}
     @media(pointer:coarse){#sparkCanvas{display:none}}
+
+
+    /* A little more atmosphere: warm aurora, elegant type and slow orbital motion */
+    body:after{content:"";position:fixed;inset:-20%;z-index:-1;pointer-events:none;opacity:.34;background:radial-gradient(ellipse at 18% 22%,rgba(194,145,54,.12),transparent 28%),radial-gradient(ellipse at 82% 65%,rgba(126,91,35,.12),transparent 30%);animation:auroraDrift 24s ease-in-out infinite alternate}
+    @keyframes auroraDrift{0%{transform:translate3d(-1.5%,0,0) scale(1)}100%{transform:translate3d(1.5%,-1%,0) scale(1.06)}}
+    .hero h1{letter-spacing:-.082em}
+    .hero-sub{letter-spacing:-.025em}
+    .orbit{animation:orbitBreathe 8s ease-in-out infinite}
+    .orbit:before{animation:orbitSpin 34s linear infinite}
+    .orbit:after{animation:orbitSpin 24s linear infinite reverse}
+    @keyframes orbitBreathe{0%,100%{transform:scale(.98);filter:brightness(.9)}50%{transform:scale(1.035);filter:brightness(1.25)}}
+    @keyframes orbitSpin{to{transform:rotate(360deg)}}
+    .portrait-wrap{animation:portraitFloat 6s ease-in-out infinite;transition:box-shadow .4s ease}
+    .portrait-wrap:hover{box-shadow:0 28px 100px rgba(0,0,0,.48),0 0 55px rgba(235,190,93,.28)}
+    @keyframes portraitFloat{0%,100%{transform:translateY(0) rotate(-.4deg)}50%{transform:translateY(-9px) rotate(.4deg)}}
+    .float-card{animation:cardFloat 5.5s ease-in-out infinite}
+    .float-two{animation-delay:-2.7s}
+    @keyframes cardFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+    .status{box-shadow:0 0 0 1px rgba(214,170,80,.035),0 0 30px rgba(214,170,80,.055)}
+    .pulse{animation:statusPulse 2.2s ease-out infinite}
+    @keyframes statusPulse{0%{box-shadow:0 0 0 0 rgba(85,223,154,.35)}70%,100%{box-shadow:0 0 0 9px rgba(85,223,154,0)}}
+    .btn-primary{background-size:180% 100%;animation:goldShimmer 7s ease-in-out infinite}
+    @keyframes goldShimmer{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+    .project-art{position:relative;overflow:hidden}
+    .project-art:after{content:"";position:absolute;inset:-70% -40%;background:linear-gradient(110deg,transparent 42%,rgba(255,232,174,.08) 50%,transparent 58%);transform:translateX(-65%);transition:transform .8s ease}
+    .project-card:hover .project-art:after{transform:translateX(65%)}
+    .metric strong{background:linear-gradient(100deg,#fff3d1,#d6aa50);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .section-head h2,.contact-panel h2{font-weight:800}
+    @media(prefers-reduced-motion:reduce){body:after,.orbit,.orbit:before,.orbit:after,.portrait-wrap,.float-card,.pulse,.btn-primary{animation:none!important}}
 
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
   </style>
@@ -219,56 +248,49 @@
     const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target);}}),{threshold:.12});
     document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 
-    // Gold spark trail: tiny cursor glints and a restrained click burst.
+    // Golden cursor trail + layered firework bursts (desktop only).
     (() => {
-      const canvas = document.getElementById('sparkCanvas');
-      const ctx = canvas && canvas.getContext('2d');
-      const progress = document.getElementById('scrollProgress');
-      if (!canvas || !ctx) return;
-      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const coarse = window.matchMedia('(pointer: coarse)').matches;
-      const particles = [];
-      let width = 0, height = 0, lastTrail = 0, raf = 0;
-      const resize = () => {
-        const dpr = Math.min(window.devicePixelRatio || 1, 1.6);
-        width = window.innerWidth; height = window.innerHeight;
-        canvas.width = Math.round(width * dpr); canvas.height = Math.round(height * dpr);
-        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      };
-      const addSpark = (x,y,vx,vy,life,size) => particles.push({x,y,vx,vy,life,max:life,size,spin:Math.random()*6.28});
-      const burst = (x,y) => {
-        for(let i=0;i<26;i++){
-          const a = Math.PI*2*i/26 + Math.random()*.12;
-          const speed = 1.1 + Math.random()*3.1;
-          addSpark(x,y,Math.cos(a)*speed,Math.sin(a)*speed,32+Math.random()*22,1+Math.random()*2.1);
+      const canvas=document.getElementById('sparkCanvas'),ctx=canvas&&canvas.getContext('2d');
+      const progress=document.getElementById('scrollProgress');
+      if(!canvas||!ctx)return;
+      const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const coarse=window.matchMedia('(pointer: coarse)').matches;
+      const particles=[],rings=[];
+      let w=0,h=0,dpr=1,raf=0,lastTrail=0;
+      const resize=()=>{dpr=Math.min(devicePixelRatio||1,1.6);w=innerWidth;h=innerHeight;canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);ctx.setTransform(dpr,0,0,dpr,0,0)};
+      const spark=(x,y,vx,vy,life,size,glow=9)=>particles.push({x,y,px:x,py:y,vx,vy,life,max:life,size,glow,twinkle:Math.random()*.8+.5});
+      const firework=(x,y,power=1)=>{
+        const count=Math.round(62*power);
+        for(let i=0;i<count;i++){const a=Math.PI*2*i/count+(Math.random()-.5)*.08,s=(1.3+Math.random()*4.7)*power;
+          spark(x,y,Math.cos(a)*s,Math.sin(a)*s,42+Math.random()*34,.8+Math.random()*2.1,12);
         }
+        for(let i=0;i<18;i++){const a=Math.PI*2*i/18,s=(2+Math.random()*1.8)*power;spark(x,y,Math.cos(a)*s,Math.sin(a)*s,58+Math.random()*22,1.2+Math.random()*1.3,16)}
+        rings.push({x,y,r:2,life:25,max:25});
       };
-      const move = e => {
-        const now = performance.now();
-        if(now-lastTrail>24){addSpark(e.clientX,e.clientY,(Math.random()-.5)*.5,-.25-Math.random()*.7,18+Math.random()*14,.8+Math.random()*1.2);lastTrail=now;}
+      const pointer=e=>{const now=performance.now();if(now-lastTrail<10)return;lastTrail=now;
+        const dx=(Math.random()-.5)*1.2,dy=-.25-Math.random()*1.1;
+        spark(e.clientX,e.clientY,dx,dy,22+Math.random()*20,.65+Math.random()*1.3,8);
+        if(Math.random()>.58)spark(e.clientX,e.clientY,(Math.random()-.5)*2,(Math.random()-.5)*2,16+Math.random()*14,.6+Math.random(),6);
       };
-      const click = e => burst(e.clientX,e.clientY);
-      const draw = () => {
-        ctx.clearRect(0,0,width,height);
+      const click=e=>{firework(e.clientX,e.clientY,1);setTimeout(()=>firework(e.clientX+(Math.random()-.5)*54,e.clientY+(Math.random()-.5)*44,.52),95)};
+      const draw=()=>{
+        ctx.clearRect(0,0,w,h);
         for(let i=particles.length-1;i>=0;i--){
-          const p=particles[i];p.x+=p.vx;p.y+=p.vy;p.vy+=.035;p.vx*=.985;p.life--;
-          const alpha=Math.max(0,p.life/p.max);
-          ctx.save();ctx.globalAlpha=alpha;ctx.translate(p.x,p.y);ctx.rotate(p.spin);
-          ctx.fillStyle='#f4d58d';ctx.shadowColor='#e2b653';ctx.shadowBlur=10;
-          ctx.fillRect(-p.size/2,-p.size*1.8,p.size,p.size*3.6);ctx.restore();
+          const p=particles[i];p.px=p.x;p.py=p.y;p.x+=p.vx;p.y+=p.vy;p.vy+=.045;p.vx*=.986;p.life--;
+          const a=Math.max(0,p.life/p.max);
+          ctx.save();ctx.globalAlpha=a*p.twinkle;ctx.strokeStyle='#f6d995';ctx.fillStyle='#fff1c5';ctx.shadowColor='#e4b755';ctx.shadowBlur=p.glow;
+          ctx.lineWidth=p.size;ctx.beginPath();ctx.moveTo(p.px,p.py);ctx.lineTo(p.x,p.y);ctx.stroke();
+          ctx.beginPath();ctx.arc(p.x,p.y,p.size*.65,0,Math.PI*2);ctx.fill();ctx.restore();
           if(p.life<=0)particles.splice(i,1);
         }
-        if(particles.length) raf=requestAnimationFrame(draw); else raf=0;
+        for(let i=rings.length-1;i>=0;i--){const r=rings[i];r.r+=3.1;r.life--;ctx.save();ctx.globalAlpha=Math.max(0,r.life/r.max)*.55;ctx.strokeStyle='#e9c36f';ctx.lineWidth=1.2;ctx.shadowColor='#d9aa4e';ctx.shadowBlur=12;ctx.beginPath();ctx.arc(r.x,r.y,r.r,0,Math.PI*2);ctx.stroke();ctx.restore();if(r.life<=0)rings.splice(i,1)}
+        if(particles.length||rings.length)raf=requestAnimationFrame(draw);else raf=0;
       };
-      const wake = () => { if(!raf) raf=requestAnimationFrame(draw); };
-      resize();window.addEventListener('resize',resize,{passive:true});
-      if(!reduceMotion&&!coarse){
-        window.addEventListener('pointermove',move,{passive:true});
-        window.addEventListener('click',click,{passive:true});
-        window.addEventListener('pointermove',wake,{passive:true});
-      }
-      const onScroll=()=>{if(progress){const max=document.documentElement.scrollHeight-window.innerHeight;progress.style.width=(max>0?window.scrollY/max*100:0)+'%';}};
-      window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+      const wake=()=>{if(!raf)raf=requestAnimationFrame(draw)};
+      resize();addEventListener('resize',resize,{passive:true});
+      if(!reduced&&!coarse){addEventListener('pointermove',pointer,{passive:true});addEventListener('click',click,{passive:true});addEventListener('pointermove',wake,{passive:true});addEventListener('click',wake,{passive:true})}
+      const scroll=()=>{if(progress){const max=document.documentElement.scrollHeight-innerHeight;progress.style.width=(max>0?scrollY/max*100:0)+'%'}};
+      addEventListener('scroll',scroll,{passive:true});scroll();
     })();
 
   </script>
