@@ -192,6 +192,10 @@
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
   
     /* FINAL HOMEPAGE + SITE-WIDE VISIBILITY / ANIMATION FIX */
+
+    /* Cursor particles must stay visible even when the OS requests reduced motion */
+    #networkCanvas{opacity:1!important;visibility:visible!important}
+
     html,body{min-height:100%;background:#fff!important}
     body{overflow-x:hidden}
     #networkCanvas{position:fixed!important;left:0!important;top:0!important;width:100vw!important;height:100vh!important;display:block!important;z-index:0!important;pointer-events:none!important;opacity:.9!important}
@@ -364,7 +368,7 @@
     (() => {
       const canvas=document.getElementById('networkCanvas'),ctx=canvas&&canvas.getContext('2d');
       if(!canvas||!ctx)return;
-      const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const reduced=false; // Keep the requested interactive effect enabled.
       const mobile=matchMedia('(max-width: 700px)').matches;
       let w=0,h=0,dpr=1,nodes=[],swarm=[],raf=0,lastSpawn=0,pointer={x:-9999,y:-9999,active:false};
       const count=mobile?34:68, link=mobile?105:145;
@@ -380,7 +384,7 @@
       const movePointer=e=>{
         pointer.x=e.clientX;pointer.y=e.clientY;pointer.active=true;
         const now=performance.now();
-        if(!reduced&&now-lastSpawn>(mobile?110:48)){lastSpawn=now;spawnSwarm(pointer.x,pointer.y)}
+        if(now-lastSpawn>(mobile?110:32)){lastSpawn=now;spawnSwarm(pointer.x,pointer.y)}
       };
       const leavePointer=()=>{pointer.active=false};
       const draw=()=>{
@@ -413,7 +417,7 @@
       resize();addEventListener('resize',resize,{passive:true});
       if(!mobile){addEventListener('pointermove',movePointer,{passive:true});addEventListener('pointerleave',leavePointer,{passive:true})}
       else {addEventListener('touchmove',e=>{if(e.touches[0])movePointer(e.touches[0])},{passive:true});addEventListener('touchend',leavePointer,{passive:true})}
-      if(!reduced)raf=requestAnimationFrame(draw);else draw();
+      raf=requestAnimationFrame(draw);
     })();
     const progress=document.getElementById('scrollProgress');
     addEventListener('scroll',()=>{if(progress){const max=document.documentElement.scrollHeight-innerHeight;progress.style.width=(max>0?scrollY/max*100:0)+'%'}},{passive:true});
