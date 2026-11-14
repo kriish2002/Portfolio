@@ -276,6 +276,22 @@
     .project-links a,.contact-links a{color:#e8c982!important}
     .project-art,.project-art *{color:#e8c982!important}
 
+  
+    /* Make About section as clear and polished as the rest of the golden theme */
+    #about{padding:104px 0!important;position:relative;isolation:isolate}
+    #about:before{content:"";position:absolute;inset:24px 0;background:linear-gradient(115deg,rgba(190,145,65,.075),rgba(255,255,255,.012) 55%,rgba(190,145,65,.045));border-top:1px solid rgba(220,184,112,.16);border-bottom:1px solid rgba(220,184,112,.16);pointer-events:none;z-index:-1}
+    #about .about-grid{display:grid!important;grid-template-columns:minmax(0,1.08fr) minmax(300px,.92fr)!important;gap:44px!important;align-items:start!important}
+    #about .section-head{margin:0!important;max-width:none!important}
+    #about .section-head h2{font-size:clamp(2rem,4vw,3.15rem)!important;line-height:1.16!important;color:#f7f0e3!important;margin:18px 0 24px!important}
+    #about .section-head h2 .accent{color:#dfbd78!important}
+    #about .about-copy{font-size:1rem!important;line-height:1.9!important;color:#d2c9b8!important;margin:0 0 16px!important;max-width:650px}
+    #about .info-list{display:grid!important;grid-template-columns:1fr 1fr!important;gap:12px!important;margin:0!important}
+    #about .info-item{min-height:94px!important;padding:17px!important;border:1px solid rgba(220,184,112,.24)!important;border-radius:12px!important;background:linear-gradient(145deg,rgba(37,31,20,.88),rgba(18,17,14,.94))!important;box-shadow:0 12px 30px rgba(0,0,0,.12)!important}
+    #about .info-item small{color:#dfbd78!important;font-size:.68rem!important;letter-spacing:.12em!important;margin-bottom:9px!important}
+    #about .info-item span{display:block!important;color:#f0e8d9!important;font-size:.88rem!important;line-height:1.5!important}
+    @media(max-width:850px){#about .about-grid{grid-template-columns:1fr!important;gap:28px!important}#about .info-list{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+    @media(max-width:520px){#about{padding:76px 0!important}#about .info-list{grid-template-columns:1fr!important}#about .info-item{min-height:unset!important}}
+
   </style>
 </head>
 <body>
