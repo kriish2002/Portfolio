@@ -371,7 +371,7 @@
       const reduced=false; // Keep the requested interactive effect enabled.
       const mobile=matchMedia('(max-width: 700px)').matches;
       let w=0,h=0,dpr=1,nodes=[],swarm=[],raf=0,lastSpawn=0,pointer={x:-9999,y:-9999,active:false};
-      const count=mobile?48:92, link=mobile?125:165;
+      const count=mobile?42:76, link=mobile?145:190;
       const resize=()=>{w=innerWidth;h=innerHeight;dpr=Math.min(devicePixelRatio||1,1.5);canvas.width=w*dpr;canvas.height=h*dpr;canvas.style.width=w+'px';canvas.style.height=h+'px';ctx.setTransform(dpr,0,0,dpr,0,0);nodes=Array.from({length:count},()=>({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.34,vy:(Math.random()-.5)*.34,r:Math.random()*2.1+1.25,phase:Math.random()*Math.PI*2}))};
       const spawnSwarm=(x,y)=>{
         // A small cloud of particles appears together at the cursor, like the supplied clip.
@@ -399,17 +399,17 @@
           const pulse=.55+Math.sin(p.phase)*.25;
           for(let j=i+1;j<nodes.length;j++){
             const q=nodes[j],dx=p.x-q.x,dy=p.y-q.y,d=Math.hypot(dx,dy);
-            if(d<link){ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.strokeStyle='rgba(105,112,235,'+((1-d/link)*.23)+')';ctx.lineWidth=.7;ctx.stroke()}
+            if(d<link){ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.strokeStyle='rgba(75,82,220,'+((1-d/link)*.42)+')';ctx.lineWidth=.7;ctx.stroke()}
           }
           // Nearby base nodes link into the cursor-created swarm.
           for(let j=0;j<swarm.length;j++){const q=swarm[j],d=Math.hypot(p.x-q.x,p.y-q.y);if(d<105){ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.strokeStyle='rgba(105,112,235,'+((1-d/105)*.34*(q.life/q.max))+')';ctx.lineWidth:.8;ctx.stroke()}}
-          ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle='rgba(76,82,232,'+Math.max(.78,pulse)+')';ctx.shadowColor='#777bff';ctx.shadowBlur=13;ctx.fill();ctx.shadowBlur=0;
+          ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle='rgba(65,72,220,'+Math.max(.92,pulse)+')';ctx.shadowColor='#777bff';ctx.shadowBlur=16;ctx.fill();ctx.shadowBlur=0;
         }
         for(let i=swarm.length-1;i>=0;i--){
           const p=swarm[i];p.x+=p.vx;p.y+=p.vy;p.vx*=.985;p.vy*=.985;p.life--;
           const alpha=Math.max(0,p.life/p.max);
           for(let j=i+1;j<swarm.length;j++){const q=swarm[j],d=Math.hypot(p.x-q.x,p.y-q.y);if(d<82){ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.strokeStyle='rgba(112,116,255,'+((1-d/82)*.48*alpha)+')';ctx.lineWidth=.85;ctx.stroke()}}
-          ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle='rgba(111,117,255,'+alpha+')';ctx.shadowColor='#777bff';ctx.shadowBlur=10;ctx.fill();ctx.shadowBlur=0;
+          ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle='rgba(65,72,220,'+alpha+')';ctx.shadowColor='#777bff';ctx.shadowBlur=10;ctx.fill();ctx.shadowBlur=0;
           if(p.life<=0)swarm.splice(i,1);
         }
         raf=requestAnimationFrame(draw);
