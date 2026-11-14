@@ -181,8 +181,8 @@
     /* Keep network animation fixed to viewport across every page section */
     #networkCanvas{position:fixed!important;inset:0!important;width:100vw!important;height:100vh!important;z-index:0!important;display:block!important;pointer-events:none!important}
     .network-glow{position:fixed!important;z-index:0!important;pointer-events:none!important}
-    header.nav,main,footer{position:relative;z-index:1}
-    main{isolation:isolate}
+    header.nav,main,footer{position:relative;z-index:2}
+    main{isolation:auto}
     .section,.hero{position:relative;z-index:1;background:transparent!important}
     .reveal{opacity:1!important;transform:none!important}
     .section-head p,.section p{color:#687087}
@@ -194,11 +194,11 @@
     /* FINAL HOMEPAGE + SITE-WIDE VISIBILITY / ANIMATION FIX */
 
     /* Cursor particles must stay visible even when the OS requests reduced motion */
-    #networkCanvas{opacity:1!important;visibility:visible!important}
+    #networkCanvas{opacity:1!important;visibility:visible!important;mix-blend-mode:multiply!important}
 
     html,body{min-height:100%;background:#fff!important}
     body{overflow-x:hidden}
-    #networkCanvas{position:fixed!important;left:0!important;top:0!important;width:100vw!important;height:100vh!important;display:block!important;z-index:0!important;pointer-events:none!important;opacity:.9!important}
+    #networkCanvas{position:fixed!important;left:0!important;top:0!important;width:100vw!important;height:100vh!important;display:block!important;z-index:1!important;pointer-events:none!important;opacity:1!important}
     .network-glow{position:fixed!important;z-index:0!important;pointer-events:none!important}
     header.nav,main,footer{position:relative;z-index:1}
     main{display:block!important}
@@ -371,8 +371,8 @@
       const reduced=false; // Keep the requested interactive effect enabled.
       const mobile=matchMedia('(max-width: 700px)').matches;
       let w=0,h=0,dpr=1,nodes=[],swarm=[],raf=0,lastSpawn=0,pointer={x:-9999,y:-9999,active:false};
-      const count=mobile?34:68, link=mobile?105:145;
-      const resize=()=>{w=innerWidth;h=innerHeight;dpr=Math.min(devicePixelRatio||1,1.5);canvas.width=w*dpr;canvas.height=h*dpr;canvas.style.width=w+'px';canvas.style.height=h+'px';ctx.setTransform(dpr,0,0,dpr,0,0);nodes=Array.from({length:count},()=>({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.34,vy:(Math.random()-.5)*.34,r:Math.random()*1.7+.7,phase:Math.random()*Math.PI*2}))};
+      const count=mobile?48:92, link=mobile?125:165;
+      const resize=()=>{w=innerWidth;h=innerHeight;dpr=Math.min(devicePixelRatio||1,1.5);canvas.width=w*dpr;canvas.height=h*dpr;canvas.style.width=w+'px';canvas.style.height=h+'px';ctx.setTransform(dpr,0,0,dpr,0,0);nodes=Array.from({length:count},()=>({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.34,vy:(Math.random()-.5)*.34,r:Math.random()*2.1+1.25,phase:Math.random()*Math.PI*2}))};
       const spawnSwarm=(x,y)=>{
         // A small cloud of particles appears together at the cursor, like the supplied clip.
         for(let k=0;k<(mobile?4:9);k++){
@@ -403,7 +403,7 @@
           }
           // Nearby base nodes link into the cursor-created swarm.
           for(let j=0;j<swarm.length;j++){const q=swarm[j],d=Math.hypot(p.x-q.x,p.y-q.y);if(d<105){ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.strokeStyle='rgba(105,112,235,'+((1-d/105)*.34*(q.life/q.max))+')';ctx.lineWidth:.8;ctx.stroke()}}
-          ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle='rgba(103,112,245,'+pulse+')';ctx.shadowColor='#777bff';ctx.shadowBlur=8;ctx.fill();ctx.shadowBlur=0;
+          ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle='rgba(76,82,232,'+Math.max(.78,pulse)+')';ctx.shadowColor='#777bff';ctx.shadowBlur=13;ctx.fill();ctx.shadowBlur=0;
         }
         for(let i=swarm.length-1;i>=0;i--){
           const p=swarm[i];p.x+=p.vx;p.y+=p.vy;p.vx*=.985;p.vy*=.985;p.life--;
