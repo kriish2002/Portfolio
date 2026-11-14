@@ -118,6 +118,15 @@
     @media(max-width:650px){.hero{padding:115px 0 78px;background-size:48px 48px}.hero h1{font-size:clamp(2.75rem,12vw,3.5rem)}.hero-proof{font-size:.59rem;gap:8px}.hero-visual-new{min-height:400px}.hero-visual-new .portrait-wrap{width:190px;height:230px}.infra-panel{left:4px;right:4px;bottom:0;padding:14px}.hero-visual-new .float-one{left:0;top:24px}.hero-visual-new .float-two{right:0;bottom:140px}.infra-footer{font-size:.47rem}}
     @media(prefers-reduced-motion:reduce){.hero-glow-one,.hero-glow-two{animation:none}}
 
+
+    /* Photo-free infrastructure hero composition */
+    .hero-visual-no-photo{min-height:510px;display:flex;align-items:center;justify-content:center}
+    .hero-visual-no-photo .orbit{width:min(470px,95%);height:min(470px,95%);border-radius:50%;border:1px solid rgba(213,173,98,.32);background:radial-gradient(circle,rgba(213,173,98,.10),rgba(13,18,24,.14) 55%,transparent 72%);box-shadow:0 0 120px rgba(190,145,65,.12),inset 0 0 100px rgba(190,145,65,.06);animation:orbitBreathe 8s ease-in-out infinite}
+    .hero-visual-no-photo .infra-panel{left:0;right:0;bottom:50%;transform:translateY(50%);max-width:430px}
+    .hero-visual-no-photo .visual-grid{inset:0}
+    @media(max-width:650px){.hero-visual-no-photo{min-height:380px}.hero-visual-no-photo .infra-panel{bottom:50%}}
+    @media(prefers-reduced-motion:reduce){.hero-visual-no-photo .orbit{animation:none}}
+
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
   </style>
 </head>
@@ -148,11 +157,11 @@
           <div class="actions"><a class="btn btn-primary" href="#projects">Explore my work ↗</a><a class="btn btn-ghost" href="resume.html" target="_blank" rel="noopener">View resume ↗</a></div>
           <div class="hero-proof"><span>Based in India</span><i></i><span>1.5+ years experience</span><i></i><span>Azure · Terraform · CI/CD</span></div>
         </div>
-        <div class="hero-visual hero-visual-new" aria-label="Profile and cloud infrastructure illustration">
+        <div class="hero-visual hero-visual-new hero-visual-no-photo" aria-label="Profile and cloud infrastructure illustration">
           <div class="visual-grid"></div><div class="orbit"></div>
-          <div class="portrait-wrap"><img src="images/toolxox-com-roundcorner.png" alt="Krishan Kumar Rawat" onerror="this.src='images/kkr.jpeg'"></div>
+          
           <div class="infra-panel"><div class="infra-top"><span class="infra-dot"></span><span>INFRASTRUCTURE OVERVIEW</span><span class="infra-live">● LIVE</span></div><div class="infra-cloud">☁ <span>AZURE CLOUD</span></div><div class="infra-branches"><i></i><i></i><i></i></div><div class="infra-nodes"><span>Terraform</span><span>CI / CD</span><span>Security</span></div><div class="infra-footer"><b>DEPLOYMENT PIPELINE</b><span>PLAN → VALIDATE → DEPLOY</span></div></div>
-          <div class="float-card float-one"><strong>Infrastructure as Code</strong>Reusable Terraform modules</div><div class="float-card float-two"><strong>Secure delivery</strong>Automated CI/CD workflows</div>
+          
         </div>
       </div><div class="hero-scroll">SCROLL TO EXPLORE ↓</div>
     </section>
