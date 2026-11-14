@@ -130,11 +130,28 @@
     @media(max-width:650px){.hero-visual-no-photo{min-height:380px}.hero-visual-no-photo .infra-panel{bottom:50%}}
     @media(prefers-reduced-motion:reduce){.hero-visual-no-photo .orbit{animation:none}}
 
+
+    /* Soft, continuously drifting gradient blobs — inspired by the supplied reference homepage */
+    .ambient-blobs{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0;isolation:isolate}
+    .ambient-blob{position:absolute;display:block;width:clamp(280px,38vw,620px);height:clamp(280px,38vw,620px);border-radius:50%;filter:blur(90px);opacity:.19;mix-blend-mode:screen;will-change:transform,border-radius}
+    .blob-a{top:-17%;left:-12%;background:radial-gradient(circle at 35% 35%,#d5ad62 0%,rgba(190,145,65,.48) 34%,transparent 72%);animation:referenceBlobOne 24s ease-in-out infinite alternate}
+    .blob-b{top:18%;right:-17%;width:clamp(320px,44vw,700px);height:clamp(320px,44vw,700px);background:radial-gradient(circle at 45% 45%,#64748b 0%,rgba(77,97,124,.42) 38%,transparent 72%);opacity:.15;animation:referenceBlobTwo 29s ease-in-out infinite alternate}
+    .blob-c{bottom:-28%;left:27%;width:clamp(300px,42vw,660px);height:clamp(300px,42vw,660px);background:radial-gradient(circle at 50% 50%,#b68b4c 0%,rgba(139,104,58,.38) 36%,transparent 72%);opacity:.12;animation:referenceBlobThree 32s ease-in-out infinite alternate}
+    @keyframes referenceBlobOne{0%{transform:translate3d(0,0,0) scale(1);border-radius:48% 52% 63% 37%/43% 41% 59% 57%}50%{transform:translate3d(18vw,12vh,0) scale(1.16);border-radius:61% 39% 44% 56%/52% 61% 39% 48%}100%{transform:translate3d(7vw,27vh,0) scale(.92);border-radius:39% 61% 56% 44%/61% 43% 57% 39%}}
+    @keyframes referenceBlobTwo{0%{transform:translate3d(0,0,0) scale(.94);border-radius:56% 44% 39% 61%/48% 58% 42% 52%}55%{transform:translate3d(-19vw,17vh,0) scale(1.13);border-radius:42% 58% 61% 39%/58% 42% 58% 42%}100%{transform:translate3d(-8vw,-8vh,0) scale(1.02);border-radius:64% 36% 48% 52%/40% 55% 45% 60%}}
+    @keyframes referenceBlobThree{0%{transform:translate3d(-8vw,0,0) scale(1);border-radius:45% 55% 57% 43%/55% 42% 58% 45%}100%{transform:translate3d(13vw,-20vh,0) scale(1.2);border-radius:58% 42% 43% 57%/42% 59% 41% 58%}}
+    body>*:not(.ambient-blobs):not(#sparkCanvas){position:relative;z-index:1}
+    #sparkCanvas{z-index:2}
+    @media(max-width:650px){.ambient-blob{filter:blur(65px);opacity:.13}}
+    @media(prefers-reduced-motion:reduce){.ambient-blob{animation:none!important}}
+
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
   </style>
 </head>
 <body>
   <div class="scroll-progress" id="scrollProgress"></div>
+  <div class="ambient-blobs" aria-hidden="true"><span class="ambient-blob blob-a"></span><span class="ambient-blob blob-b"></span><span class="ambient-blob blob-c"></span></div>
+
   <canvas id="sparkCanvas" aria-hidden="true"></canvas>
   <header class="nav" id="top">
     <div class="container nav-inner">
