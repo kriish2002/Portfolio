@@ -140,7 +140,7 @@
     @keyframes referenceBlobOne{0%{transform:translate3d(0,0,0) scale(1);border-radius:48% 52% 63% 37%/43% 41% 59% 57%}50%{transform:translate3d(18vw,12vh,0) scale(1.16);border-radius:61% 39% 44% 56%/52% 61% 39% 48%}100%{transform:translate3d(7vw,27vh,0) scale(.92);border-radius:39% 61% 56% 44%/61% 43% 57% 39%}}
     @keyframes referenceBlobTwo{0%{transform:translate3d(0,0,0) scale(.94);border-radius:56% 44% 39% 61%/48% 58% 42% 52%}55%{transform:translate3d(-19vw,17vh,0) scale(1.13);border-radius:42% 58% 61% 39%/58% 42% 58% 42%}100%{transform:translate3d(-8vw,-8vh,0) scale(1.02);border-radius:64% 36% 48% 52%/40% 55% 45% 60%}}
     @keyframes referenceBlobThree{0%{transform:translate3d(-8vw,0,0) scale(1);border-radius:45% 55% 57% 43%/55% 42% 58% 45%}100%{transform:translate3d(13vw,-20vh,0) scale(1.2);border-radius:58% 42% 43% 57%/42% 59% 41% 58%}}
-    body>*:not(.ambient-blobs):not(#sparkCanvas){position:relative;z-index:1}
+    body>*:not(.ambient-blobs):not(#sparkCanvas):not(#networkCanvas):not(.network-glow):not(.scroll-progress){position:relative;z-index:1}
     #sparkCanvas{z-index:2}
     @media(max-width:650px){.ambient-blob{filter:blur(65px);opacity:.13}}
     @media(prefers-reduced-motion:reduce){.ambient-blob{animation:none!important}}
@@ -225,6 +225,14 @@
     .network-glow{z-index:1!important;pointer-events:none!important}
     body>*:not(#networkCanvas):not(.network-glow):not(.scroll-progress){position:relative;z-index:3}
     #networkCanvas{will-change:transform}
+
+  
+    /* Particle canvas is a fixed transparent overlay between the page background and content */
+    #networkCanvas{position:fixed!important;inset:0!important;width:100vw!important;height:100vh!important;display:block!important;visibility:visible!important;opacity:1!important;z-index:0!important;pointer-events:none!important;mix-blend-mode:normal!important}
+    body{position:relative!important;background:#fff!important}
+    body>*:not(#networkCanvas):not(.network-glow):not(.scroll-progress){position:relative;z-index:1}
+    .network-glow{position:fixed!important;z-index:0!important;pointer-events:none!important}
+    main,main>section,.section,.hero,footer{background:transparent!important;position:relative;z-index:1}
 
   </style>
 </head>
@@ -378,61 +386,90 @@
     const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target);}}),{threshold:.12});
     document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 
-    // Interactive constellation network: mouse movement releases a connected swarm of violet nodes.
+    // Full-page ambient particle field + cursor-reactive connected network.
     (() => {
-      const canvas=document.getElementById('networkCanvas'),ctx=canvas&&canvas.getContext('2d');
-      if(!canvas||!ctx)return;
-      const reduced=false; // Keep the requested interactive effect enabled.
-      const mobile=matchMedia('(max-width: 700px)').matches;
-      let w=0,h=0,dpr=1,nodes=[],swarm=[],raf=0,lastSpawn=0,pointer={x:-9999,y:-9999,active:false};
-      const count=mobile?42:76, link=mobile?145:190;
-      const resize=()=>{w=innerWidth;h=innerHeight;dpr=Math.min(devicePixelRatio||1,1.5);canvas.width=w*dpr;canvas.height=h*dpr;canvas.style.width=w+'px';canvas.style.height=h+'px';ctx.setTransform(dpr,0,0,dpr,0,0);nodes=Array.from({length:count},()=>({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.34,vy:(Math.random()-.5)*.34,r:Math.random()*2.1+1.25,phase:Math.random()*Math.PI*2}))};
-      const spawnSwarm=(x,y)=>{
-        // A small cloud of particles appears together at the cursor, like the supplied clip.
-        for(let k=0;k<(mobile?4:9);k++){
-          const a=Math.random()*Math.PI*2,dist=Math.random()*34,speed=.12+Math.random()*.55;
-          swarm.push({x:x+Math.cos(a)*dist,y:y+Math.sin(a)*dist,vx:Math.cos(a)*speed+(Math.random()-.5)*.35,vy:Math.sin(a)*speed+(Math.random()-.5)*.35,r:.8+Math.random()*1.45,life:95+Math.random()*55,max:150,phase:Math.random()*6});
-        }
-        if(swarm.length>190)swarm.splice(0,swarm.length-190);
+      const canvas=document.getElementById('networkCanvas');
+      const ctx=canvas && canvas.getContext('2d');
+      if(!ctx) return;
+      const mobile=matchMedia('(max-width:700px)').matches;
+      let w=0,h=0,dpr=1,particles=[],cursorParticles=[],lastEmit=0;
+      const pointer={x:-1000,y:-1000,active:false};
+      const baseCount=mobile?52:105;
+      const resize=()=>{
+        w=innerWidth;h=innerHeight;dpr=Math.min(devicePixelRatio||1,2);
+        canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);
+        canvas.style.width=w+'px';canvas.style.height=h+'px';
+        ctx.setTransform(dpr,0,0,dpr,0,0);
+        particles=Array.from({length:baseCount},()=>({
+          x:Math.random()*w,y:Math.random()*h,
+          vx:(Math.random()-.5)*.42,vy:(Math.random()-.5)*.42,
+          r:Math.random()*1.15+1,phase:Math.random()*6.28
+        }));
       };
-      const movePointer=e=>{
+      const emit=(x,y)=>{
+        for(let i=0;i<(mobile?3:6);i++){
+          const a=Math.random()*Math.PI*2, speed=.18+Math.random()*.62;
+          cursorParticles.push({x:x+(Math.random()-.5)*16,y:y+(Math.random()-.5)*16,
+            vx:Math.cos(a)*speed,vy:Math.sin(a)*speed,r:.9+Math.random()*1.15,life:105,max:105});
+        }
+        if(cursorParticles.length>220) cursorParticles.splice(0,cursorParticles.length-220);
+      };
+      const onMove=e=>{
         pointer.x=e.clientX;pointer.y=e.clientY;pointer.active=true;
         const now=performance.now();
-        if(now-lastSpawn>(mobile?110:32)){lastSpawn=now;spawnSwarm(pointer.x,pointer.y)}
+        if(now-lastEmit>(mobile?75:24)){lastEmit=now;emit(pointer.x,pointer.y);}
       };
-      const leavePointer=()=>{pointer.active=false};
-      const draw=()=>{
+      const onLeave=()=>{pointer.active=false;};
+      const frame=()=>{
         ctx.clearRect(0,0,w,h);
-        for(let i=0;i<nodes.length;i++){
-          const p=nodes[i];
-          if(!reduced){
-            if(pointer.active){const dx=pointer.x-p.x,dy=pointer.y-p.y,d=Math.hypot(dx,dy);if(d<190&&d>1){const pull=(1-d/190)*.012;p.vx+=dx/d*pull;p.vy+=dy/d*pull}}
-            p.x+=p.vx;p.y+=p.vy;p.vx*=.999;p.vy*=.999;p.phase+=.018;
-            if(p.x<0||p.x>w)p.vx*=-1;if(p.y<0||p.y>h)p.vy*=-1;
+        // Ambient blue points drift across the entire page and connect when close.
+        for(let i=0;i<particles.length;i++){
+          const p=particles[i];
+          p.phase+=.02;
+          if(pointer.active){
+            const dx=pointer.x-p.x,dy=pointer.y-p.y,d=Math.hypot(dx,dy);
+            if(d<230&&d>1){const force=(1-d/230)*.018;p.vx+=dx/d*force;p.vy+=dy/d*force;}
           }
-          const pulse=.55+Math.sin(p.phase)*.25;
-          for(let j=i+1;j<nodes.length;j++){
-            const q=nodes[j],dx=p.x-q.x,dy=p.y-q.y,d=Math.hypot(dx,dy);
-            if(d<link){ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.strokeStyle='rgba(75,82,220,'+((1-d/link)*.42)+')';ctx.lineWidth=.7;ctx.stroke()}
+          p.x+=p.vx;p.y+=p.vy;p.vx*=.999;p.vy*=.999;
+          if(p.x<-5)p.x=w+5;if(p.x>w+5)p.x=-5;
+          if(p.y<-5)p.y=h+5;if(p.y>h+5)p.y=-5;
+          for(let j=i+1;j<particles.length;j++){
+            const q=particles[j],d=Math.hypot(p.x-q.x,p.y-q.y);
+            const max=mobile?112:145;
+            if(d<max){ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);
+              ctx.strokeStyle='rgba(65,105,235,'+((1-d/max)*.42)+')';ctx.lineWidth=.8;ctx.stroke();}
           }
-          // Nearby base nodes link into the cursor-created swarm.
-          for(let j=0;j<swarm.length;j++){const q=swarm[j],d=Math.hypot(p.x-q.x,p.y-q.y);if(d<105){ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.strokeStyle='rgba(105,112,235,'+((1-d/105)*.34*(q.life/q.max))+')';ctx.lineWidth:.8;ctx.stroke()}}
-          ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle='rgba(65,72,220,'+Math.max(.92,pulse)+')';ctx.shadowColor='#777bff';ctx.shadowBlur=16;ctx.fill();ctx.shadowBlur=0;
+          // Mouse creates longer connecting lines to nearby ambient points.
+          if(pointer.active){
+            const d=Math.hypot(pointer.x-p.x,pointer.y-p.y);
+            if(d<245){ctx.beginPath();ctx.moveTo(pointer.x,pointer.y);ctx.lineTo(p.x,p.y);
+              ctx.strokeStyle='rgba(75,105,245,'+((1-d/245)*.5)+')';ctx.lineWidth=1;ctx.stroke();}
+          }
+          const glow=.68+Math.sin(p.phase)*.2;
+          ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+          ctx.fillStyle='rgba(62,105,242,'+glow+')';ctx.shadowColor='rgba(76,115,255,.8)';ctx.shadowBlur=7;ctx.fill();ctx.shadowBlur=0;
         }
-        for(let i=swarm.length-1;i>=0;i--){
-          const p=swarm[i];p.x+=p.vx;p.y+=p.vy;p.vx*=.985;p.vy*=.985;p.life--;
+        // Cursor trail particles connect to each other and fade smoothly.
+        for(let i=cursorParticles.length-1;i>=0;i--){
+          const p=cursorParticles[i];p.x+=p.vx;p.y+=p.vy;p.vx*=.985;p.vy*=.985;p.life--;
           const alpha=Math.max(0,p.life/p.max);
-          for(let j=i+1;j<swarm.length;j++){const q=swarm[j],d=Math.hypot(p.x-q.x,p.y-q.y);if(d<82){ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.strokeStyle='rgba(112,116,255,'+((1-d/82)*.48*alpha)+')';ctx.lineWidth=.85;ctx.stroke()}}
-          ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle='rgba(65,72,220,'+alpha+')';ctx.shadowColor='#777bff';ctx.shadowBlur=10;ctx.fill();ctx.shadowBlur=0;
-          if(p.life<=0)swarm.splice(i,1);
+          for(let j=i+1;j<cursorParticles.length;j++){
+            const q=cursorParticles[j],d=Math.hypot(p.x-q.x,p.y-q.y);
+            if(d<95){ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);
+              ctx.strokeStyle='rgba(70,105,245,'+((1-d/95)*.65*alpha)+')';ctx.lineWidth=1;ctx.stroke();}
+          }
+          ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+          ctx.fillStyle='rgba(63,105,245,'+alpha+')';ctx.shadowColor='#6688ff';ctx.shadowBlur=9;ctx.fill();ctx.shadowBlur=0;
+          if(p.life<=0)cursorParticles.splice(i,1);
         }
-        raf=requestAnimationFrame(draw);
+        requestAnimationFrame(frame);
       };
       resize();addEventListener('resize',resize,{passive:true});
-      if(!mobile){addEventListener('pointermove',movePointer,{passive:true});addEventListener('pointerleave',leavePointer,{passive:true})}
-      else {addEventListener('touchmove',e=>{if(e.touches[0])movePointer(e.touches[0])},{passive:true});addEventListener('touchend',leavePointer,{passive:true})}
-      raf=requestAnimationFrame(draw);
+      addEventListener('pointermove',onMove,{passive:true});
+      addEventListener('pointerleave',onLeave,{passive:true});
+      requestAnimationFrame(frame);
     })();
+
     const progress=document.getElementById('scrollProgress');
     addEventListener('scroll',()=>{if(progress){const max=document.documentElement.scrollHeight-innerHeight;progress.style.width=(max>0?scrollY/max*100:0)+'%'}},{passive:true});
 
