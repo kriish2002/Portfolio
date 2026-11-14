@@ -177,6 +177,18 @@
     @media(max-width:700px){.hero,.hero-network{min-height:650px;padding:130px 0 75px}.hero h1{font-size:clamp(2.5rem,11vw,3.6rem)}.hero-proof{gap:8px;font-size:.58rem}.network-glow{width:260px;height:260px}}
     @media(prefers-reduced-motion:reduce){.network-glow{animation:none!important}}
 
+
+    /* Keep network animation fixed to viewport across every page section */
+    #networkCanvas{position:fixed!important;inset:0!important;width:100vw!important;height:100vh!important;z-index:0!important;display:block!important;pointer-events:none!important}
+    .network-glow{position:fixed!important;z-index:0!important;pointer-events:none!important}
+    header.nav,main,footer{position:relative;z-index:1}
+    main{isolation:isolate}
+    .section,.hero{position:relative;z-index:1;background:transparent!important}
+    .reveal{opacity:1!important;transform:none!important}
+    .section-head p,.section p{color:#687087}
+    .section-head h2,.section h3,.section h4{color:#17192b}
+    .nav-links{color:#4e536a!important}
+
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
   </style>
 </head>
@@ -346,7 +358,7 @@
           const pulse=.55+Math.sin(p.phase)*.25;
           for(let j=i+1;j<nodes.length;j++){
             const q=nodes[j],dx=p.x-q.x,dy=p.y-q.y,d=Math.hypot(dx,dy);
-            if(d<mobile?105:145){ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.strokeStyle='rgba(105,112,235,'+((1-d/(mobile?105:145))*.23)+')';ctx.lineWidth=.7;ctx.stroke()}
+            if(d<(mobile?105:145)){ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.strokeStyle='rgba(105,112,235,'+((1-d/(mobile?105:145))*.23)+')';ctx.lineWidth=.7;ctx.stroke()}
           }
           ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle='rgba(103,112,245,'+pulse+')';ctx.shadowColor='#777bff';ctx.shadowBlur=8;ctx.fill();ctx.shadowBlur=0;
         }
