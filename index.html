@@ -1,783 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Krishan Kumar Rawat | Cloud &amp; DevOps Engineer</title>
-    <meta name="description" content="Cloud &amp; DevOps Engineer | Azure | Kubernetes | Docker | Terraform | Azure DevOps | GitHub Actions | Jenkins | AKS | CI/CD | DevSecOps | Cloud Security | Infrastructure as Code">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#070b14">
+  <meta name="description" content="Krishan Kumar Rawat — Cloud & DevOps Engineer specializing in Microsoft Azure, AWS, Terraform, Kubernetes, Docker, CI/CD and DevSecOps.">
+  <meta property="og:title" content="Krishan Kumar Rawat | Cloud & DevOps Engineer">
+  <meta property="og:description" content="Cloud infrastructure, automation and DevSecOps portfolio.">
+  <title>Krishan Kumar Rawat | Cloud & DevOps Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#070b14;--panel:#0d1422;--panel2:#101b2d;--line:rgba(148,163,184,.16);--text:#edf4ff;--muted:#9aa9bf;--blue:#4ea1ff;--cyan:#64d8ff;--max:1160px}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:88px}body{margin:0;background:var(--bg);color:var(--text);font-family:Manrope,system-ui,sans-serif;line-height:1.7}body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(ellipse at 78% 5%,rgba(27,104,213,.18),transparent 34%),radial-gradient(ellipse at 5% 45%,rgba(29,78,216,.09),transparent 30%),linear-gradient(180deg,#070b14,#080e19 55%,#070b14)}
+    a{color:inherit;text-decoration:none}.container{width:min(var(--max),calc(100% - 44px));margin:auto}.mono,.eyebrow,.tag,.nav-cta{font-family:"DM Mono",monospace}.mono,.eyebrow{color:var(--cyan);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase}.section{padding:104px 0}.section-head{max-width:680px;margin-bottom:42px}.section-head h2{font-size:clamp(2rem,4vw,3rem);line-height:1.12;letter-spacing:-.05em;margin:12px 0}.section-head p{color:var(--muted);margin:0}.accent{color:var(--blue)}
+    .nav{position:fixed;z-index:20;top:0;left:0;right:0;border-bottom:1px solid transparent;transition:.25s;background:rgba(7,11,20,.7);backdrop-filter:blur(16px)}.nav.scrolled{border-color:var(--line);background:rgba(7,11,20,.92)}.nav-inner{height:76px;display:flex;align-items:center;justify-content:space-between}.brand{font-weight:800;letter-spacing:-.04em;font-size:1.12rem}.brand b{color:var(--blue)}.nav-links{display:flex;align-items:center;gap:28px;color:#b9c6d8;font-size:.88rem}.nav-links a:hover{color:white}.nav-cta{border:1px solid rgba(78,161,255,.55);padding:10px 16px;border-radius:8px;color:#b9dcff}.menu-btn{display:none;background:none;border:1px solid var(--line);color:white;padding:8px 11px;border-radius:8px;font-size:1.1rem}
+    .hero{min-height:790px;padding:150px 0 90px;display:flex;align-items:center;position:relative;overflow:hidden}.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:54px;align-items:center}.status{display:inline-flex;align-items:center;gap:10px;padding:8px 13px;border:1px solid var(--line);border-radius:99px;color:#b7c8dd;background:rgba(13,20,34,.7);font-size:.8rem}.pulse{width:8px;height:8px;border-radius:50%;background:#55df9a;box-shadow:0 0 0 5px rgba(85,223,154,.12)}.hero h1{font-size:clamp(3rem,6.5vw,5.5rem);line-height:1.02;letter-spacing:-.075em;margin:24px 0 16px}.hero h1 span{display:block;color:var(--blue)}.hero-sub{font-size:clamp(1.1rem,2vw,1.4rem);color:#c4d2e4;font-weight:600;margin:0 0 16px}.hero-copy{max-width:650px;color:var(--muted);font-size:1.03rem}.actions{display:flex;gap:13px;flex-wrap:wrap;margin:30px 0}.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:13px 19px;border-radius:9px;font-weight:800;font-size:.9rem;transition:.2s;border:1px solid var(--line)}.btn-primary{background:linear-gradient(110deg,#2878df,#38a8f5);color:white;border-color:transparent;box-shadow:0 12px 32px rgba(39,120,223,.2)}.btn:hover{transform:translateY(-3px)}.btn-ghost{background:rgba(13,20,34,.65);color:#d9e8fa}.socials{display:flex;gap:20px;color:#91a4bd;font-size:.86rem}.socials a:hover{color:var(--cyan)}
+    .hero-visual{position:relative;min-height:420px;display:grid;place-items:center}.orbit{position:absolute;width:min(390px,90%);aspect-ratio:1;border:1px solid rgba(78,161,255,.24);border-radius:50%;box-shadow:0 0 90px rgba(39,120,223,.1),inset 0 0 70px rgba(39,120,223,.07)}.orbit:before,.orbit:after{content:"";position:absolute;border:1px dashed rgba(100,216,255,.18);border-radius:50%;inset:26px}.orbit:after{inset:58px}.portrait-wrap{position:relative;width:250px;height:300px;border-radius:26px;padding:7px;background:linear-gradient(145deg,rgba(100,216,255,.9),rgba(37,99,235,.15) 45%,rgba(78,161,255,.7));box-shadow:0 25px 90px rgba(0,0,0,.45)}.portrait-wrap img{width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:20px;background:#101b2d}.float-card{position:absolute;padding:12px 15px;border:1px solid var(--line);background:rgba(13,20,34,.88);backdrop-filter:blur(12px);border-radius:12px;box-shadow:0 12px 35px rgba(0,0,0,.25);font-size:.8rem;color:#d8e7f8}.float-card strong{display:block;color:white;font-size:.92rem}.float-one{top:55px;left:0}.float-two{right:0;bottom:55px}.hero-scroll{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);color:#70839e;font: .7rem "DM Mono";letter-spacing:.16em;text-transform:uppercase}
+    .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:25px}.metric{padding:18px;border:1px solid var(--line);border-radius:13px;background:rgba(13,20,34,.72)}.metric strong{display:block;font-size:1.55rem;letter-spacing:-.04em}.metric span{font-size:.78rem;color:var(--muted)}
+    .about-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:start}.about-copy{color:var(--muted);font-size:1rem}.about-copy strong{color:#eaf3ff}.info-list{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:26px}.info-item{padding:15px;border:1px solid var(--line);border-radius:10px;background:rgba(13,20,34,.6)}.info-item small{display:block;color:#7f93ad;font: .7rem "DM Mono";text-transform:uppercase;letter-spacing:.08em}.info-item span{font-size:.9rem;color:#dbe7f6}
+    .skill-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.skill-card,.project-card,.cert-card,.edu-card,.timeline-card{background:linear-gradient(145deg,rgba(16,27,45,.9),rgba(10,16,28,.85));border:1px solid var(--line);border-radius:15px;padding:23px;transition:.25s}.skill-card:hover,.project-card:hover,.cert-card:hover{transform:translateY(-5px);border-color:rgba(78,161,255,.5)}.skill-icon{font-size:1.35rem}.skill-card h3{font-size:1rem;margin:12px 0 8px}.skill-card p{color:var(--muted);font-size:.85rem;margin:0}.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.chip{padding:6px 10px;border-radius:7px;border:1px solid rgba(100,216,255,.16);background:rgba(34,93,157,.12);color:#b9d8f6;font-size:.74rem}
+    .timeline{display:grid;grid-template-columns:1fr 1fr;gap:18px}.timeline-card{position:relative;padding:25px 26px}.timeline-card h3{margin:8px 0 6px;font-size:1.08rem}.timeline-card p{color:var(--muted);font-size:.88rem;margin:0}.timeline-card .date{font: .75rem "DM Mono";color:var(--cyan)}
+    .project-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.project-card{padding:0;overflow:hidden}.project-art{height:170px;background:radial-gradient(circle at 75% 15%,rgba(64,158,255,.3),transparent 35%),linear-gradient(135deg,#101d32,#0a1020);display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--line);font-size:3rem;color:#78baff}.project-body{padding:23px}.project-body h3{margin:0 0 9px;font-size:1.08rem}.project-body p{color:var(--muted);font-size:.86rem;margin:0}.project-links{display:flex;gap:16px;margin-top:18px;color:#8ec8ff;font-size:.82rem;font-weight:700}.project-links a:hover{color:white}
+    .cert-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.cert-card{padding:18px}.cert-card strong{display:block;font-size:.9rem}.cert-card span{font-size:.75rem;color:var(--muted)}.edu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.edu-card .date{font: .75rem "DM Mono";color:var(--cyan)}.edu-card h3{font-size:1rem;margin:9px 0 5px}.edu-card p{font-size:.82rem;color:var(--muted);margin:0}
+    .contact-panel{display:grid;grid-template-columns:1fr 1fr;gap:30px;padding:36px;border:1px solid rgba(78,161,255,.25);border-radius:18px;background:radial-gradient(ellipse at 95% 5%,rgba(39,120,223,.15),transparent 40%),rgba(13,20,34,.8)}.contact-panel h2{font-size:2rem;line-height:1.15;letter-spacing:-.05em;margin:8px 0 12px}.contact-panel p{color:var(--muted)}.contact-links{display:grid;gap:12px;align-content:center}.contact-links a{padding:14px 16px;border:1px solid var(--line);border-radius:10px;background:rgba(7,11,20,.4);font-size:.9rem;overflow-wrap:anywhere}.contact-links a span{display:block;color:#8196b2;font: .68rem "DM Mono";text-transform:uppercase;letter-spacing:.1em}.contact-links a:hover{border-color:var(--blue)}
+    footer{padding:28px 0;border-top:1px solid var(--line);color:#71839b;font-size:.78rem}.footer-inner{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease}.reveal.visible{opacity:1;transform:none}
+    @media(max-width:900px){.hero-grid,.about-grid{grid-template-columns:1fr}.hero{padding-top:130px}.hero-visual{min-height:370px;max-width:550px;width:100%;margin:auto}.skill-grid{grid-template-columns:repeat(2,1fr)}.cert-grid,.edu-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:650px){.container{width:min(100% - 32px,var(--max))}.section{padding:76px 0}.nav-inner{height:68px}.menu-btn{display:block}.nav-links{display:none;position:absolute;top:68px;left:0;right:0;padding:20px 22px 24px;background:#0a1120;border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start;gap:17px}.nav-links.open{display:flex}.nav-cta{display:none}.hero{min-height:auto;padding:120px 0 80px}.hero h1{font-size:3.25rem}.hero-visual{min-height:330px}.portrait-wrap{width:205px;height:250px}.float-one{left:-3px;top:30px}.float-two{right:-3px;bottom:25px}.metrics{grid-template-columns:repeat(2,1fr)}.info-list,.skill-grid,.timeline,.project-grid,.cert-grid,.edu-grid,.contact-panel{grid-template-columns:1fr}.contact-panel{padding:24px}.section-head{margin-bottom:30px}.socials{flex-wrap:wrap}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+  </style>
+</head>
+<body>
+  <header class="nav" id="top">
+    <div class="container nav-inner">
+      <a class="brand" href="#home">KR<span><b>.</b></span></a>
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="#about">About</a><a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#education">Education</a><a href="#contact">Contact</a>
+      </nav>
+      <a class="nav-cta" href="https://drive.google.com/file/d/1M6RqVFb5eaoD4jyqE9IzVIMT_0qIXpoh/view?usp=sharing" target="_blank" rel="noopener">VIEW RESUME ↗</a>
+    </div>
+  </header>
 
-    
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-
-    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="css/animate.css">
-    
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
-
-    <link rel="stylesheet" href="css/aos.css">
-
-    <link rel="stylesheet" href="css/ionicons.min.css">
-    
-    <link rel="stylesheet" href="css/flaticon.css">
-    <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="css/style.css">
-
-
-
-<style>
-
-/*======================================
-//--//-->   ABOUT
-======================================*/
-
-.about-mf .box-shadow-full {
-  padding-top: 4rem;
-  padding-bottom: 4rem;
-}
-
-.about-mf .about-img {
-  margin-bottom: 2rem;
-}
-
-.about-mf .about-img img {
-  margin-left: 10px;
-}
-
-
-.skill-mf .progress {
-  /* background-color: #cde1f8; */
-  margin: .5rem 0 1.2rem 0;
-  border-radius: 0;
-  height: .7rem;
-}
-
-.skill-mf .progress .progress-bar {
-  height: .7rem;
-  background-color: #ffbd39;
-}
-
-
-/* Animation styles */
-#typing-animation {
-  position: relative;
-  font-size: 30px;
-  font-weight: bold;
-  color: rgb(255, 255, 255);
-  overflow: hidden;
-  white-space: nowrap;
-  animation: typing 3s steps(20, end) infinite;
-}
-
-#typing-animation:before {
-  content: "";
-  /* position: absolute; */
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 100%;
-  background-color: #ccc;
-  animation: typing-cursor 0.5s ease-in-out infinite;
-}
-
-@keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
-}
-
-@keyframes typing-cursor {
-  from {
-    width: 5px;
-  }
-  to {
-    width: 0;
-  }
-}
-
-
-/* project image zoom effect */
-
-.zoom-effect {
-  overflow: hidden;
-  transition: transform 0.3s ease-out;
-}
-
-.zoom-effect:hover {
-  transform: scale(1.1);
-}
-
-
-</style>
-
-
-  </head>
-  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
-	  
-	  
-    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light site-navbar-target" id="ftco-navbar">
-	    <div class="container">
-	      <a class="navbar-brand" href="index.html">Portfolio </a>
-	      <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-	        <span class="oi oi-menu"></span> Menu
-	      </button>
-
-	      <div class="collapse navbar-collapse" id="ftco-nav">
-	        <ul class="navbar-nav nav ml-auto">
-	          <li class="nav-item"><a href="#home-section" class="nav-link"><span>Home</span></a></li>
-	          <li class="nav-item"><a href="#about-section" class="nav-link"><span>About</span></a></li>
-	          <li class="nav-item"><a href="#resume-section" class="nav-link"><span>Resume</span></a></li>
-	          <li class="nav-item"><a href="#project-section" class="nav-link"><span>Projects</span></a></li>
-	          <li class="nav-item"><a href="#contact-section" class="nav-link"><span>Contact</span></a></li>
-	        </ul>
-	      </div>
-	    </div>
-	  </nav>
-	  <section id="home-section" class="hero">
-		  <div class="home-slider  owl-carousel">
-	       <div class="slider-item ">
-	      	<div class="overlay"></div>
-	         <div class="container">
-	          <div class="row d-md-flex no-gutters slider-text align-items-end justify-content-end" data-scrollax-parent="true">
-	          	<div class="one-third js-fullheight order-md-last img" style="background-image:url(images/bg2.jpg);">
-	          	 <div class="overlay"></div>
-	          	</div>
-		          <div class="one-forth d-flex  align-items-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-		          	<div class="text">
-		          		<span class="subheading"><h3>NAMASTE!</h3></span>
-			            <h1 class="mb-4 mt-3">I'm <span>krishan kumar rawat</span></h1>
-
-						<!-- Element to contain animated typing -->
-						<span id="typing-animation"></span>
-
-						<script>
-
-						// Initialize the typing animation
-						const typingAnimationElement = document.getElementById('typing-animation');
-
-						// Create an array of typing text
-						const typingTexts = [
-						'Cloud Engineer  ',
-						'DevOps Engineer  ',
-						'Platform Engineer  ',
-						'SRE',
-						];
-
-						// Create a function to display the typing animation for a given text
-						function playTypingAnimation(text) {
-						// Loop through each character and add it to the element
-						for (let i = 0; i < text.length; i++) {
-							setTimeout(() => {
-							typingAnimationElement.textContent += text[i];
-							}, i * 200); // Increase the delay to slow down the typing animation
-						}
-
-						// Once the animation is complete, reset the text and start over
-						setTimeout(() => {
-							typingAnimationElement.textContent = '';
-							playTypingAnimation(typingTexts[(typingTexts.indexOf(text) + 1) % typingTexts.length]);
-						}, text.length * 200);
-						}
-
-						// Start the typing animation loop
-						playTypingAnimation(typingTexts[0]);
-
-						</script>
-
-						<br>
-						<br>
-			            <h2>Cloud &amp; DevOps Engineer | Azure | Kubernetes | Terraform</h2>
-						<!-- <h2 class="d-flex" style="margin-bottom: 0">With over 5 years of experience</h2> -->
-						<!-- <br> -->
-			            <p><a href="https://www.linkedin.com/in/krishan-k-rawat/" class="btn btn-primary py-3 px-4">LinkedIn</a> 
-							<a href="https://github.com/kriish2002" class="btn btn-white btn-outline-white py-3 px-4">My works</a></p>
-		            </div>
-		          </div>
-	        	</div>
-	        </div>
-	      </div>
-		</div>
-    </section>
-
-
-
-   <section class="ftco-about img ftco-section ftco-no-pb" id="about-section">
-    	<div class="container">
-			<div class="row">
-				<div class="row d-flex align-items-stretch">
-				<!-- <div class="row d-flex"> -->
-					<div class="col-md-6 col-lg-5 d-flex">
-						<div class="img-about img d-flex align-items-stretch">
-							<div class="overlay">
-								<div class="row">
-									<div class="col-sm-6 col-md-5">
-									  <div class="about-img">
-										<img src="images/toolxox-com-roundcorner.png" class="img-fluid rounded b-shadow-a" alt="">
-									  </div>
-									</div>
-
-									<!-- Details next to profile image -->
-									<div class="col-sm-5 col-md-5">
-									  <div class="about-info">
-										<p><span class="title-s">Name: </span> <span> Krishan kumar rawat</span></p>
-										<p><span class="title-s">Job Role: </span> <span> Cloud &amp; DevOps Engineer</span></p>
-										<p><span class="title-s">Domain : </span> <span> Cloud Infrastructure &amp; DevOps</span></p>
-								        <p><span class="title-s">Specialized : </span> <span> Azure Cloud, Kubernetes &amp; Automation</span></p>
-						                <p><span class="title-s">Address : </span> <span> Gurugram, Haryana, India</span></p>
-								
-									  </div>
-									</div>
-								  </div>
-
-								<div class="skill-mf">
-									<p class="title-s">Skills</p>
-									<span>Microsoft Azure</span> <span class="pull-right">85%</span>
-									<div class="progress">
-										<div class="progress-bar" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0"
-											aria-valuemax="100"></div>
-									</div>
-									
-									<span>Terraform (IaC)</span> <span class="pull-right">85%</span>
-									<div class="progress">
-										<div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0"
-											aria-valuemax="100"></div>
-									</div>
-
-									<span>Kubernetes / AKS</span> <span class="pull-right">80%</span>
-									<div class="progress">
-										<div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0"
-											aria-valuemax="100"></div>
-									</div>
-									
-									
-									<span>Docker</span> <span class="pull-right">80%</span>
-									<div class="progress">
-										<div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0"
-											aria-valuemax="100"></div>
-									</div>
-
-									<span>CI/CD (Azure DevOps &amp; GitHub Actions)</span> <span class="pull-right">80%</span>
-									<div class="progress">
-										<div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0"
-											aria-valuemax="100"></div>
-									</div>
-									
-									<span>DevSecOps</span> <span class="pull-right">70%</span>
-									<div class="progress">
-										<div class="progress-bar" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0"
-											aria-valuemax="100"></div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					
-					<div class="col-md-6 col-lg-7 pl-lg-5 pb-5">
-						<div class="row justify-content-start pb-3">
-							<div class="col-md-12 heading-section ftco-animate">
-								
-								<h1 class="big">About</h1>
-								<h2 class="mb-4">About Me</h2>
-								
-								<p>Hi, I'm Krishna Kumar Rawat, a Cloud &amp; DevOps Engineer with 2+ years of experience in designing, automating, and managing cloud infrastructure on Microsoft Azure. I specialize in Infrastructure as Code (Terraform), Azure DevOps, Kubernetes, Docker, CI/CD Automation, and Cloud Security.
-
-									I enjoy building secure, scalable, and highly available cloud environments using modern DevOps practices. My expertise includes Azure networking, Azure Landing Zones, containerization, orchestration, monitoring, and DevSecOps. I am passionate about automation, continuous learning, and solving real-world infrastructure challenges.</p>								<ul class="about-info mt-4 px-md-0 px-2">
-									<li class="d-flex"><span>Profile:</span> <span>Cloud &amp; DevOps Engineering</span></li>
-									<li class="d-flex"><span>Domain:</span> <span>Cloud Infrastructure, Platform Engineering &amp; DevSecOps</span></li>
-									<li class="d-flex"><span>Education:</span> <span>Bachelor of Technology</span></li>
-									<li class="d-flex"><span>Language:</span> <span>English, Hindi</span></li>
-									<li class="d-flex"><span>Cloud Platforms:</span> <span>Microsoft Azure &amp; AWS</span></li>
-									<li class="d-flex"><span>Other Skills:</span> <span>Terraform, Kubernetes, Docker, Jenkins, GitHub Actions, Linux &amp; Git</span></li>
-									<li class="d-flex"><span>Interest:</span> <span>Traveling, Travel Photography, Playing Cricket</span></li>
-									
-								</ul>
-							</div>
-						</div>
-
-
-						<div class="counter-wrap ftco-animate d-flex mt-md-3">
-							<div class="text">
-								<p class="mb-4">
-									<span class="number" data-number="2">0</span> <span>+</span>
-									<span>&nbsp; Years in Cloud &amp; DevOps</span>
-								</p>
-								<p><a href="https://www.coursera.org/accomplishments" class="btn btn-primary py-3 px-3">Coursera</a></p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-    </section>
-
-
-
-	
-    <section class="ftco-section ftco-no-pb" id="resume-section">
-    	<div class="container">
-    		<div class="row justify-content-center pb-5">
-          <div class="col-md-10 heading-section text-center ftco-animate">
-			<h1 class="big big-2">Professional Summary</h1>
-            <h2 class="mb-4">Professional Summary</h2>
-            <p>
-				Cloud &amp; DevOps Engineer with 2+ years of experience in Microsoft Azure, Terraform, Kubernetes, Docker, Azure DevOps, GitHub Actions, and Infrastructure Automation.
-				Experienced in designing Azure Landing Zones, implementing CI/CD pipelines, automating cloud infrastructure, deploying containerized applications, integrating DevSecOps tools, and managing secure production environments.
-				Strong knowledge of Azure Networking, Application Gateway, Load Balancer, Azure Kubernetes Service (AKS), Azure Monitor, Microsoft Entra ID, and cloud governance. Passionate about building scalable, secure, and production-ready cloud solutions.</p>
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <div class="status"><i class="pulse"></i> CLOUD • AUTOMATION • RELIABILITY</div>
+          <p class="eyebrow" style="margin-top:27px">NAMASTE, I'M</p>
+          <h1>Krishan Kumar <span>Rawat.</span></h1>
+          <p class="hero-sub">Cloud &amp; DevOps Engineer</p>
+          <p class="hero-copy">I build and automate cloud infrastructure with a focus on <strong>Microsoft Azure, Terraform, Kubernetes and CI/CD</strong>. I enjoy turning complex infrastructure requirements into secure, repeatable and maintainable solutions.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="#projects">Explore my work <span>↗</span></a>
+            <a class="btn btn-ghost" href="https://drive.google.com/file/d/1M6RqVFb5eaoD4jyqE9IzVIMT_0qIXpoh/view?usp=sharing" target="_blank" rel="noopener">Download resume ↓</a>
+          </div>
+          <div class="socials">
+            <a href="https://www.linkedin.com/in/krishan-k-rawat/" target="_blank" rel="noopener">LinkedIn ↗</a>
+            <a href="https://github.com/kriish2002" target="_blank" rel="noopener">GitHub ↗</a>
+            <a href="mailto:rawatkrish2002@gmail.com">Email ↗</a>
           </div>
         </div>
-
-		<div class="row justify-content-center pb-4">
-			<div class="col-md-10 heading-section text-center ftco-animate">
-				<h1 class="big big-2">Technical Skills</h1>
-				<h2 class="mb-4">Technical Skills</h2>
-			</div>
-		</div>
-
-		<div class="row justify-content-center mb-5">
-			<div class="col-md-10">
-				<div class="row">
-
-					<div class="col-md-4 mb-4">
-						<h3 class="mb-3" style="font-size:1.1rem;">☁️ Cloud Platforms</h3>
-						<p><span class="badge badge-primary p-2 m-1">Microsoft Azure</span><span class="badge badge-primary p-2 m-1">AWS</span></p>
-					</div>
-
-					<div class="col-md-4 mb-4">
-						<h3 class="mb-3" style="font-size:1.1rem;">☸️ Containers &amp; Orchestration</h3>
-						<p><span class="badge badge-primary p-2 m-1">Docker</span><span class="badge badge-primary p-2 m-1">Docker Compose</span><span class="badge badge-primary p-2 m-1">Kubernetes</span><span class="badge badge-primary p-2 m-1">AKS</span><span class="badge badge-primary p-2 m-1">Helm</span><span class="badge badge-primary p-2 m-1">Ingress</span></p>
-					</div>
-
-					<div class="col-md-4 mb-4">
-						<h3 class="mb-3" style="font-size:1.1rem;">🚀 DevOps &amp; CI/CD</h3>
-						<p><span class="badge badge-primary p-2 m-1">Azure DevOps</span><span class="badge badge-primary p-2 m-1">GitHub Actions</span><span class="badge badge-primary p-2 m-1">Jenkins</span><span class="badge badge-primary p-2 m-1">YAML Pipelines</span><span class="badge badge-primary p-2 m-1">Release Management</span></p>
-					</div>
-
-					<div class="col-md-4 mb-4">
-						<h3 class="mb-3" style="font-size:1.1rem;">🏗 Infrastructure as Code</h3>
-						<p><span class="badge badge-primary p-2 m-1">Terraform</span><span class="badge badge-primary p-2 m-1">Terraform Modules</span><span class="badge badge-primary p-2 m-1">Remote Backend</span><span class="badge badge-primary p-2 m-1">State Management</span><span class="badge badge-primary p-2 m-1">Workspaces</span></p>
-					</div>
-
-					<div class="col-md-4 mb-4">
-						<h3 class="mb-3" style="font-size:1.1rem;">🌐 Azure Services</h3>
-						<p><span class="badge badge-primary p-2 m-1">Landing Zone</span><span class="badge badge-primary p-2 m-1">VNet / Subnets</span><span class="badge badge-primary p-2 m-1">NSG</span><span class="badge badge-primary p-2 m-1">Azure Firewall</span><span class="badge badge-primary p-2 m-1">Bastion</span><span class="badge badge-primary p-2 m-1">App Gateway</span><span class="badge badge-primary p-2 m-1">Load Balancer</span><span class="badge badge-primary p-2 m-1">Front Door</span><span class="badge badge-primary p-2 m-1">Key Vault</span><span class="badge badge-primary p-2 m-1">Storage Account</span><span class="badge badge-primary p-2 m-1">Azure SQL</span><span class="badge badge-primary p-2 m-1">App Service</span><span class="badge badge-primary p-2 m-1">VM Scale Sets</span></p>
-					</div>
-
-					<div class="col-md-4 mb-4">
-						<h3 class="mb-3" style="font-size:1.1rem;">🔐 Identity &amp; Security</h3>
-						<p><span class="badge badge-primary p-2 m-1">Microsoft Entra ID</span><span class="badge badge-primary p-2 m-1">RBAC</span><span class="badge badge-primary p-2 m-1">Azure Policy</span><span class="badge badge-primary p-2 m-1">Managed Identity</span><span class="badge badge-primary p-2 m-1">Defender for Cloud</span><span class="badge badge-primary p-2 m-1">WAF</span><span class="badge badge-primary p-2 m-1">DDoS Protection</span></p>
-					</div>
-
-					<div class="col-md-4 mb-4">
-						<h3 class="mb-3" style="font-size:1.1rem;">📊 Monitoring &amp; Logging</h3>
-						<p><span class="badge badge-primary p-2 m-1">Azure Monitor</span><span class="badge badge-primary p-2 m-1">Log Analytics</span><span class="badge badge-primary p-2 m-1">App Insights</span><span class="badge badge-primary p-2 m-1">Prometheus</span><span class="badge badge-primary p-2 m-1">Grafana</span><span class="badge badge-primary p-2 m-1">ELK Stack</span><span class="badge badge-primary p-2 m-1">OpenCost</span></p>
-					</div>
-
-					<div class="col-md-4 mb-4">
-						<h3 class="mb-3" style="font-size:1.1rem;">🛡 DevSecOps</h3>
-						<p><span class="badge badge-primary p-2 m-1">tfsec</span><span class="badge badge-primary p-2 m-1">TFLint</span><span class="badge badge-primary p-2 m-1">Trivy</span><span class="badge badge-primary p-2 m-1">TruffleHog</span><span class="badge badge-primary p-2 m-1">SonarQube</span><span class="badge badge-primary p-2 m-1">Super Linter</span><span class="badge badge-primary p-2 m-1">Terratest</span><span class="badge badge-primary p-2 m-1">Checkov</span></p>
-					</div>
-
-					<div class="col-md-4 mb-4">
-						<h3 class="mb-3" style="font-size:1.1rem;">💻 OS &amp; Scripting</h3>
-						<p><span class="badge badge-primary p-2 m-1">Linux (Ubuntu/RHEL/CentOS)</span><span class="badge badge-primary p-2 m-1">Windows Server</span><span class="badge badge-primary p-2 m-1">Bash</span><span class="badge badge-primary p-2 m-1">PowerShell</span><span class="badge badge-primary p-2 m-1">Python</span><span class="badge badge-primary p-2 m-1">YAML</span></p>
-					</div>
-
-					<div class="col-md-4 mb-4">
-						<h3 class="mb-3" style="font-size:1.1rem;">🖥 Version Control</h3>
-						<p><span class="badge badge-primary p-2 m-1">Git</span><span class="badge badge-primary p-2 m-1">GitHub</span><span class="badge badge-primary p-2 m-1">Git Flow</span></p>
-					</div>
-
-					<div class="col-md-4 mb-4">
-						<h3 class="mb-3" style="font-size:1.1rem;">🌐 Networking</h3>
-						<p><span class="badge badge-primary p-2 m-1">TCP/IP</span><span class="badge badge-primary p-2 m-1">DNS</span><span class="badge badge-primary p-2 m-1">HTTP/HTTPS</span><span class="badge badge-primary p-2 m-1">SSH</span><span class="badge badge-primary p-2 m-1">VPN</span><span class="badge badge-primary p-2 m-1">CIDR / NAT</span></p>
-					</div>
-
-				</div>
-
-				<div class="text-center mt-3">
-					<h3 class="mb-3" style="font-size:1.1rem;">📚 Currently Exploring</h3>
-					<p><span class="badge badge-secondary p-2 m-1">GitOps (ArgoCD)</span><span class="badge badge-secondary p-2 m-1">Azure Container Apps</span><span class="badge badge-secondary p-2 m-1">Azure Front Door</span><span class="badge badge-secondary p-2 m-1">Service Mesh (Istio)</span><span class="badge badge-secondary p-2 m-1">Platform Engineering</span><span class="badge badge-secondary p-2 m-1">FinOps</span><span class="badge badge-secondary p-2 m-1">Azure AI Services</span></p>
-				</div>
-			</div>
-		</div>
-
-		<div class="row">
-			<h1 class="big big-2">Certifications</h1>
-		
-			<div class="underline"></div>
-		</div>
-		<br>
-		
-			  <div class="row d-flex justify-content-right">
-				<div class="col-md-4 d-flex ftco-animate">
-					<div class="blog-entry justify-content-end">
-					<a href="https://www.coursera.org/account/accomplishments/certificate/BPHYF46WQPSW" class="block-20 zoom-effect" style="background-image: url('images/machine learningCer_page-0001.jpg'); width: 400px; height: 280px;">
-					</a>
-					<div class="text mt-3 float-right d-block">	  
-					  <h3 class="heading"><a href="https://www.coursera.org/account/accomplishments/certificate/BPHYF46WQPSW">view </a></h3>
-					</div>
-				  </div>
-				</div>
-
-
-		<div class="row d-flex justify-content-center">  
-			<div class="col-md-4 d-flex ftco-animate">
-				<div class="blog-entry justify-content-end">
-					<a href="https://drive.google.com/file/d/1uWpdyVKKe8rT_rmZs91Cl3OzR2lUpZJ4/view?usp=sharing" class="block-20 zoom-effect" style="background-image: url('images/Krishan Kumar Rawat_page-0001.jpg'); width: 400px; height: 280px;">
-					</a>
-					<div class="text mt-3 float-right d-block">
-						<h3 class="heading"><a href="https://drive.google.com/file/d/1uWpdyVKKe8rT_rmZs91Cl3OzR2lUpZJ4/view?usp=sharing">view</a></h3>
-					</div>
-				</div>
-			</div>  
-		</div>
-		
-        
-		<div class="row d-flex justify-content-right">  
-			<div class="col-md-4 d-flex ftco-animate">
-				<div class="blog-entry justify-content-end">
-					<a href="https://www.coursera.org/account/accomplishments/certificate/5NAMUPZKQBKF" class="block-20 zoom-effect" style="background-image: url('images/AWS_page-0001.jpg'); width: 400px; height: 280px;">
-					</a>
-					<div class="text mt-3 float-right d-block">
-						<h3 class="heading"><a href= "https://www.coursera.org/account/accomplishments/certificate/5NAMUPZKQBKF">view</a></h3>
-		
-					</div>
-				</div>
-			</div>  
-		</div>
-
-		<div class="row d-flex justify-content-center">  
-			<div class="col-md-4 d-flex ftco-animate">
-				<div class="blog-entry justify-content-end">
-					<a href="https://www.coursera.org/account/accomplishments/certificate/WHN3VLUVV2PJ" class="block-20 zoom-effect" style="background-image: url('images/IBM_page-0001.jpg'); width: 400px; height: 280px;">
-					</a>
-					<div class="text mt-3 float-right d-block">
-						<h3 class="heading"><a href="https://www.coursera.org/account/accomplishments/certificate/WHN3VLUVV2PJ">view</a></h3>
-					</div>
-				</div>
-			</div>  
-		</div>
-
-
-		<div class="row d-flex justify-content-left">  
-			<div class="col-md-4 d-flex ftco-animate">
-				<div class="blog-entry justify-content-end">
-					<a href="https://www.kaggle.com/learn/certification/krishankumarrawat/python" class="block-20 zoom-effect" style="background-image: url('images/Krishan kumar rawat - Python (2).png'); width: 400px; height: 280px;">
-					</a>
-					<div class="text mt-3 float-right d-block">
-						<h3 class="heading"><a href="https://www.kaggle.com/learn/certification/krishankumarrawat/python">view</a></h3>
-					</div>
-				</div>
-			</div>  
-		</div>
-		
-
-	
-		
-
-				<div class="col-md-6">
-								</p>
-							</div>
-				</div>
-			
-
-		<br>
-		<br>
-
-		<div class="row">
-			<h1 class="big-4">Education</h1>
-			<div class="underline"></div>
-		</div>
-		<br>
-		
-			<div class="row">
-    			<div class="col-md-6">
-    				<div class="resume-wrap ftco-animate">
-    					<span class="date">2020-2024</span>
-    					<h2>Bachelor of Technology</h2>
-    					<span class="position">Dr. A.P.J. Abdul Kalam Technical University (AKTU)</span>
-    					<p class="mt-4">Grade: First class distinction.</p>
-    				</div>
-    			</div>
-
-    			<div class="col-md-6">
-    				<div class="resume-wrap ftco-animate">
-    					<span class="date">2018-2019</span>
-    					<h2>Intermediate</h2>
-    					<span class="position">Sanskriti Senior Secondry Public School</span>
-    					<p class="mt-4">Grade: First class distinction.</p>
-    				</div>
-				</div>
-
-                <div class="col-md-6">
-    				<div class="resume-wrap ftco-animate">
-    					<span class="date">2016-2017</span>
-    					<h2>Highschool</h2>
-    					<span class="position">Sanskriti Senior Secondry Public Schoo</span>
-    					<p class="mt-4">Grade: First class distinction.</p>
-    				</div>
-    			</div> 
-
-    		</div>
-
-    		<div class="row justify-content-center mt-5">
-    			<div class="col-md-6 text-center ftco-animate">
-    				<p><a href="https://drive.google.com/file/d/1M6RqVFb5eaoD4jyqE9IzVIMT_0qIXpoh/view?usp=sharing" class="btn btn-primary py-4 px-5">Download Resume</a></p>
-					 
-    			</div>
-    		</div>
-    	</div>
+        <div class="hero-visual" aria-label="Profile photo">
+          <div class="orbit"></div>
+          <div class="portrait-wrap"><img src="images/toolxox-com-roundcorner.png" alt="Krishan Kumar Rawat" onerror="this.src='images/kkr.jpeg'"></div>
+          <div class="float-card float-one"><strong>2+ years</strong>Cloud &amp; DevOps experience</div>
+          <div class="float-card float-two"><strong>Azure + AWS</strong>Cloud platforms</div>
+        </div>
+      </div>
+      <div class="hero-scroll">SCROLL TO EXPLORE ↓</div>
     </section>
 
-   
+    <section class="container" aria-label="Quick highlights">
+      <div class="metrics reveal">
+        <div class="metric"><strong>2+</strong><span>Years of experience</span></div>
+        <div class="metric"><strong>Azure</strong><span>Primary cloud platform</span></div>
+        <div class="metric"><strong>IaC</strong><span>Terraform automation</span></div>
+        <div class="metric"><strong>CI/CD</strong><span>Build &amp; deployment workflows</span></div>
+      </div>
+    </section>
 
-    <section class="ftco-section" id="project-section">
+    <section class="section" id="about">
+      <div class="container about-grid">
+        <div class="section-head reveal">
+          <span class="eyebrow">01 / ABOUT</span>
+          <h2>Engineering cloud systems with <span class="accent">clarity &amp; automation.</span></h2>
+          <p class="about-copy">I’m a Cloud &amp; DevOps Engineer with 2+ years of experience working with cloud infrastructure and automation, primarily on Microsoft Azure. My work and hands-on projects span Infrastructure as Code, CI/CD, containerization, Kubernetes, cloud networking and security.</p>
+          <p class="about-copy">I focus on reusable Terraform modules, reliable deployment workflows and secure cloud foundations. I’m continuously strengthening my skills across Azure, AWS and modern platform engineering practices.</p>
+        </div>
+        <div class="info-list reveal">
+          <div class="info-item"><small>Role</small><span>Cloud &amp; DevOps Engineer</span></div>
+          <div class="info-item"><small>Domain</small><span>Cloud Infrastructure &amp; DevSecOps</span></div>
+          <div class="info-item"><small>Specialization</small><span>Azure, Kubernetes &amp; Automation</span></div>
+          <div class="info-item"><small>Location</small><span>Gurugram, Haryana, India</span></div>
+          <div class="info-item"><small>Education</small><span>Bachelor of Technology</span></div>
+          <div class="info-item"><small>Languages</small><span>English &amp; Hindi</span></div>
+          <div class="info-item"><small>Cloud platforms</small><span>Microsoft Azure &amp; AWS</span></div>
+          <div class="info-item"><small>Interests</small><span>Travel, photography &amp; cricket</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="skills">
       <div class="container">
-        <div class="row justify-content-center mb-5 pb-5">
-          <div class="col-md-7 heading-section text-center ftco-animate">
-            <h1 class="big big-2">Projects</h1>
-            <h2 class="mb-4">Featured Projects</h2>
-            <p>Below are sample Cloud &amp; DevOps projects on Azure, Terraform, Kubernetes, CI/CD &amp; DevSecOps.</p>
-          </div>
+        <div class="section-head reveal"><span class="eyebrow">02 / TOOLKIT</span><h2>Technical <span class="accent">skills.</span></h2><p>A practical toolkit for building, deploying, securing and operating cloud-native infrastructure.</p></div>
+        <div class="skill-grid">
+          <article class="skill-card reveal"><div class="skill-icon">☁️</div><h3>Cloud Platforms</h3><p>Cloud infrastructure and platform services.</p><div class="chips"><span class="chip">Microsoft Azure</span><span class="chip">AWS</span></div></article>
+          <article class="skill-card reveal"><div class="skill-icon">🏗️</div><h3>Infrastructure as Code</h3><p>Repeatable infrastructure provisioning and state management.</p><div class="chips"><span class="chip">Terraform</span><span class="chip">Modules</span><span class="chip">Remote Backend</span><span class="chip">Workspaces</span></div></article>
+          <article class="skill-card reveal"><div class="skill-icon">📦</div><h3>Containers &amp; Orchestration</h3><p>Container packaging and Kubernetes deployments.</p><div class="chips"><span class="chip">Docker</span><span class="chip">Compose</span><span class="chip">Kubernetes</span><span class="chip">AKS</span><span class="chip">Helm</span><span class="chip">Ingress</span></div></article>
+          <article class="skill-card reveal"><div class="skill-icon">🚀</div><h3>DevOps &amp; CI/CD</h3><p>Automated build, validation and release workflows.</p><div class="chips"><span class="chip">Azure DevOps</span><span class="chip">GitHub Actions</span><span class="chip">Jenkins</span><span class="chip">YAML Pipelines</span><span class="chip">Release Management</span></div></article>
+          <article class="skill-card reveal"><div class="skill-icon">🌐</div><h3>Azure Services &amp; Networking</h3><p>Cloud networking, compute, application and storage services.</p><div class="chips"><span class="chip">Landing Zones</span><span class="chip">VNet / Subnets</span><span class="chip">NSG</span><span class="chip">Azure Firewall</span><span class="chip">Bastion</span><span class="chip">App Gateway</span><span class="chip">Load Balancer</span><span class="chip">Front Door</span><span class="chip">Key Vault</span><span class="chip">Storage</span><span class="chip">Azure SQL</span><span class="chip">App Service</span><span class="chip">VM Scale Sets</span></div></article>
+          <article class="skill-card reveal"><div class="skill-icon">🔐</div><h3>Identity &amp; Security</h3><p>Access control, governance and cloud security fundamentals.</p><div class="chips"><span class="chip">Microsoft Entra ID</span><span class="chip">RBAC</span><span class="chip">Azure Policy</span><span class="chip">Managed Identity</span><span class="chip">Defender for Cloud</span><span class="chip">WAF</span><span class="chip">DDoS Protection</span></div></article>
+          <article class="skill-card reveal"><div class="skill-icon">📊</div><h3>Monitoring &amp; Logging</h3><p>Metrics, logs and application observability.</p><div class="chips"><span class="chip">Azure Monitor</span><span class="chip">Log Analytics</span><span class="chip">Application Insights</span><span class="chip">Prometheus</span><span class="chip">Grafana</span><span class="chip">ELK Stack</span><span class="chip">OpenCost</span></div></article>
+          <article class="skill-card reveal"><div class="skill-icon">🛡️</div><h3>DevSecOps</h3><p>Infrastructure scanning, image scanning and code security.</p><div class="chips"><span class="chip">tfsec</span><span class="chip">TFLint</span><span class="chip">Trivy</span><span class="chip">TruffleHog</span><span class="chip">SonarQube</span><span class="chip">Super Linter</span><span class="chip">Terratest</span><span class="chip">Checkov</span></div></article>
+          <article class="skill-card reveal"><div class="skill-icon">⌨️</div><h3>OS, Scripting &amp; Version Control</h3><p>Daily tools for administration, scripting and collaboration.</p><div class="chips"><span class="chip">Linux (Ubuntu/RHEL/CentOS)</span><span class="chip">Windows Server</span><span class="chip">Bash</span><span class="chip">PowerShell</span><span class="chip">Python</span><span class="chip">YAML</span><span class="chip">Git</span><span class="chip">GitHub</span><span class="chip">Git Flow</span></div></article>
+          <article class="skill-card reveal"><div class="skill-icon">🔌</div><h3>Networking Fundamentals</h3><p>Core concepts used to troubleshoot connectivity and services.</p><div class="chips"><span class="chip">TCP/IP</span><span class="chip">DNS</span><span class="chip">HTTP/HTTPS</span><span class="chip">SSH</span><span class="chip">VPN</span><span class="chip">CIDR</span><span class="chip">NAT</span></div></article>
+          <article class="skill-card reveal"><div class="skill-icon">🧭</div><h3>Currently Exploring</h3><p>Expanding into cloud-native and platform engineering practices.</p><div class="chips"><span class="chip">GitOps / ArgoCD</span><span class="chip">Azure Container Apps</span><span class="chip">Azure Front Door</span><span class="chip">Istio</span><span class="chip">Platform Engineering</span><span class="chip">FinOps</span><span class="chip">Azure AI Services</span></div></article>
         </div>
-        <div class="row d-flex">
-          <div class="col-md-4 d-flex ftco-animate">
-          	<div class="blog-entry justify-content-end">
-              <a href="https://github.com/kriish2002/Infrastructure_using_Terraform" class="block-20 zoom-effect" style="background-image: url('images/collage-customer-experience-concept (1).jpg');">
-              </a>
-              <div class="text mt-3 float-right d-block">
-
-                <h3 class="heading"><a href="https://github.com/kriish2002/Infrastructure_using_Terraform">Azure Landing Zone using Terraform</a></h3>
-                <p>Designed and deployed a secure Azure Landing Zone with Hub-Spoke networking, RBAC, Azure Policy, NSGs, Key Vault, and modular Terraform architecture.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4 d-flex ftco-animate">
-          	<div class="blog-entry justify-content-end">
-              <a href="https://github.com/kriish2002/github-actions-flask" class="block-20 zoom-effect" style="background-image: url('images/proj_2.jpg');">
-              </a>
-              <div class="text mt-3 float-right d-block">
-
-                <h3 class="heading"><a href="https://github.com/kriish2002/github-actions-flask">Flask App CI/CD with GitHub Actions</a></h3>
-                <p>Automated building, testing, containerization, and continuous deployment of a Flask Python web application using GitHub Actions CI/CD workflows.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 d-flex ftco-animate">
-          	<div class="blog-entry">
-              <a href="https://github.com/kriish2002/kubernetes_configure" class="block-20 zoom-effect" style="background-image: url('images/proj_3.jpg');">
-              </a>
-              <div class="text mt-3 float-right d-block">
-
-                <h3 class="heading"><a href="https://github.com/kriish2002/kubernetes_configure">Kubernetes Cluster Configuration & AGIC Ingress</a></h3>
-                <p>Kubernetes manifests, Helm charts, and custom configurations for deploying containerized applications with Azure Application Gateway Ingress Controller (AGIC).</p>
-              </div>
-            </div>
-          </div>
-        </div>
-	<br>
-		<!-- added justify-content-center to center align the last two projects -->
-		<div class="row d-flex justify-content-center">  
-			<div class="col-md-4 d-flex ftco-animate">
-				<div class="blog-entry justify-content-end">
-				<a href="https://github.com/kriish2002/ADO-Pipeline" class="block-20 zoom-effect" style="background-image: url('images/proj_4.jpg');">
-				</a>
-				<div class="text mt-3 float-right d-block">
-  
-				  <h3 class="heading"><a href="https://github.com/kriish2002/ADO-Pipeline">Azure DevOps Multi-Stage Pipelines</a></h3>
-				  <p>End-to-end Azure DevOps multi-stage YAML pipelines for continuous integration, automated testing, container deployment, and infrastructure releases.</p>
-				</div>
-			  </div>
-			</div>
-			<div class="col-md-4 d-flex ftco-animate">
-				<div class="blog-entry justify-content-end">
-				<a href="https://github.com/kriish2002/azure-devsecops-cicd-aks" class="block-20 zoom-effect" style="background-image: url('images/proj_5.jpg');">
-				</a>
-				<div class="text mt-3 float-right d-block">
-  
-				  <h3 class="heading"><a href="https://github.com/kriish2002/azure-devsecops-cicd-aks">DevSecOps CI/CD & AKS Infrastructure</a></h3>
-				  <p>Automated provisioning of Azure Virtual Networks, AKS, Storage Accounts, Application Gateway, NSGs, and DevSecOps pipelines.</p>
-				</div>
-			  </div>
-			</div>
-		 </div>
-	  </div>
+      </div>
     </section>
 
-	<section class="ftco-section ftco-no-pt ftco-no-pb ftco-counter img" id="section-counter">
+    <section class="section" id="experience">
       <div class="container">
-		<div class="row d-md-flex align-items-center">
-          <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
-            <div class="block-18">
-              <div class="text">
-                <strong class="number" data-number="1">0</strong>
-                <span>Azure</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
-            <div class="block-18">
-              <div class="text">
-                <strong class="number" data-number="2">0</strong>
-                <span>Terraform</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
-            <div class="block-18">
-              <div class="text">
-                <strong class="number" data-number="3">0</strong>
-                <span>Kubernetes</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
-            <div class="block-18">
-              <div class="text">
-                <strong class="number" data-number="1">0</strong>
-                <span>Docker</span>
-              </div>
-            </div>
+        <div class="section-head reveal"><span class="eyebrow">03 / EXPERIENCE</span><h2>Professional <span class="accent">journey.</span></h2><p>Cloud and DevOps experience focused on infrastructure automation, delivery pipelines and reliable cloud environments.</p></div>
+        <div class="timeline">
+          <article class="timeline-card reveal"><span class="date">2+ YEARS</span><h3>Cloud &amp; DevOps Engineering</h3><p>Experience across Azure cloud infrastructure, Terraform-based provisioning, CI/CD automation, containerization, Kubernetes and cloud security practices.</p></article>
+          <article class="timeline-card reveal"><span class="date">CORE FOCUS</span><h3>Infrastructure Automation</h3><p>Building reusable infrastructure patterns with Terraform, managing environment-specific configuration and applying state-management and governance practices.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-head reveal"><span class="eyebrow">04 / SELECTED WORK</span><h2>Projects built with <span class="accent">purpose.</span></h2><p>Hands-on work across Azure infrastructure, Kubernetes, CI/CD and DevSecOps. Explore the source code and implementation details.</p></div>
+        <div class="project-grid">
+          <article class="project-card reveal"><div class="project-art">☁️</div><div class="project-body"><h3>Azure Landing Zone using Terraform</h3><p>Terraform-based Azure foundation covering modular infrastructure, Hub-Spoke networking, RBAC, Azure Policy, NSGs and Key Vault.</p><div class="chips"><span class="chip">Azure</span><span class="chip">Terraform</span><span class="chip">Hub-Spoke</span></div><div class="project-links"><a href="https://github.com/kriish2002/Infrastructure_using_Terraform" target="_blank" rel="noopener">View repository ↗</a></div></div></article>
+          <article class="project-card reveal"><div class="project-art">⚙️</div><div class="project-body"><h3>Flask App CI/CD with GitHub Actions</h3><p>Automated build, test, containerization and deployment workflow for a Flask application using GitHub Actions.</p><div class="chips"><span class="chip">GitHub Actions</span><span class="chip">Flask</span><span class="chip">Docker</span></div><div class="project-links"><a href="https://github.com/kriish2002/github-actions-flask" target="_blank" rel="noopener">View repository ↗</a></div></div></article>
+          <article class="project-card reveal"><div class="project-art">☸️</div><div class="project-body"><h3>Kubernetes Configuration &amp; AGIC Ingress</h3><p>Kubernetes manifests, Helm charts and configurations for containerized workloads with Azure Application Gateway Ingress Controller.</p><div class="chips"><span class="chip">Kubernetes</span><span class="chip">Helm</span><span class="chip">AGIC</span></div><div class="project-links"><a href="https://github.com/kriish2002/kubernetes_configure" target="_blank" rel="noopener">View repository ↗</a></div></div></article>
+          <article class="project-card reveal"><div class="project-art">🔁</div><div class="project-body"><h3>Azure DevOps Multi-Stage Pipelines</h3><p>YAML-based multi-stage pipeline examples for CI, automated validation, container delivery and infrastructure release workflows.</p><div class="chips"><span class="chip">Azure DevOps</span><span class="chip">YAML</span><span class="chip">CI/CD</span></div><div class="project-links"><a href="https://github.com/kriish2002/ADO-Pipeline" target="_blank" rel="noopener">View repository ↗</a></div></div></article>
+          <article class="project-card reveal"><div class="project-art">🛡️</div><div class="project-body"><h3>DevSecOps CI/CD &amp; AKS Infrastructure</h3><p>Azure infrastructure and DevSecOps workflow work involving networking, AKS, storage, Application Gateway and security checks.</p><div class="chips"><span class="chip">Azure</span><span class="chip">AKS</span><span class="chip">DevSecOps</span></div><div class="project-links"><a href="https://github.com/kriish2002/azure-devsecops-cicd-aks" target="_blank" rel="noopener">View repository ↗</a></div></div></article>
+          <article class="project-card reveal"><div class="project-art">🧰</div><div class="project-body"><h3>More Cloud &amp; DevOps Work</h3><p>Explore additional repositories, experiments and infrastructure automation work on GitHub.</p><div class="chips"><span class="chip">Cloud</span><span class="chip">Automation</span><span class="chip">DevOps</span></div><div class="project-links"><a href="https://github.com/kriish2002?tab=repositories" target="_blank" rel="noopener">Browse all repositories ↗</a></div></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="education">
+      <div class="container">
+        <div class="section-head reveal"><span class="eyebrow">05 / LEARNING</span><h2>Education &amp; <span class="accent">certifications.</span></h2><p>Academic foundation and continued learning through online courses and practical certifications.</p></div>
+        <div class="edu-grid">
+          <article class="edu-card reveal"><span class="date">2020 – 2024</span><h3>Bachelor of Technology</h3><p>Dr. A.P.J. Abdul Kalam Technical University (AKTU)<br>First Class with Distinction</p></article>
+          <article class="edu-card reveal"><span class="date">2018 – 2019</span><h3>Intermediate</h3><p>Sanskriti Senior Secondary Public School<br>First Class with Distinction</p></article>
+          <article class="edu-card reveal"><span class="date">2016 – 2017</span><h3>High School</h3><p>Sanskriti Senior Secondary Public School<br>First Class with Distinction</p></article>
+        </div>
+        <div style="height:28px"></div>
+        <div class="cert-grid">
+          <a class="cert-card reveal" href="https://www.coursera.org/account/accomplishments/certificate/BPHYF46WQPSW" target="_blank" rel="noopener"><strong>Coursera Certificate 01 ↗</strong><span>View credential</span></a>
+          <a class="cert-card reveal" href="https://drive.google.com/file/d/1uWpdyVKKe8rT_rmZs91Cl3OzR2lUpZJ4/view?usp=sharing" target="_blank" rel="noopener"><strong>Certificate 02 ↗</strong><span>View credential</span></a>
+          <a class="cert-card reveal" href="https://www.coursera.org/account/accomplishments/certificate/5NAMUPZKQBKF" target="_blank" rel="noopener"><strong>Coursera Certificate 03 ↗</strong><span>View credential</span></a>
+          <a class="cert-card reveal" href="https://www.coursera.org/account/accomplishments/certificate/WHN3VLUVV2PJ" target="_blank" rel="noopener"><strong>Coursera Certificate 04 ↗</strong><span>View credential</span></a>
+          <a class="cert-card reveal" href="https://www.kaggle.com/learn/certification/krishankumarrawat/python" target="_blank" rel="noopener"><strong>Kaggle Python Certificate ↗</strong><span>View credential</span></a>
+        </div>
+        <p style="color:var(--muted);font-size:.78rem;margin-top:16px">Certification links are retained from the previous portfolio.</p>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="contact-panel reveal">
+          <div><span class="eyebrow">06 / GET IN TOUCH</span><h2>Let’s build something <span class="accent">reliable.</span></h2><p>Have an opportunity, a cloud challenge or a project to discuss? Feel free to reach out.</p><a class="btn btn-primary" href="mailto:rawatkrish2002@gmail.com">Send me an email ↗</a></div>
+          <div class="contact-links">
+            <a href="mailto:rawatkrish2002@gmail.com"><span>Email</span>rawatkrish2002@gmail.com</a>
+            <a href="tel:+917078025700"><span>Phone</span>+91 7078025700</a>
+            <a href="https://www.linkedin.com/in/krishan-k-rawat/" target="_blank" rel="noopener"><span>LinkedIn</span>Connect professionally ↗</a>
+            <a href="https://discord.com" target="_blank" rel="noopener"><span>Discord</span>Join me ↗</a>
+            <a href="https://forms.gle/" target="_blank" rel="noopener"><span>Contact form</span>Have a question ↗</a>
           </div>
         </div>
       </div>
-	
-	  <div class="ftco-section ftco-hireme img margin-top" style="background-image: url(images/bg_1.jpg)">
-			<!-- <div class="container"> -->
-				<div class="row justify-content-center">
-					<div class="col-md-7 ftco-animate text-center">
-						<h2>More projects on<span> Github  </span> </h2>
-						<div class="heading"> <h4> I love automating infrastructure &amp; solving production challenges </h4>
-						<br>
-						<p><a href="https://github.com/kriish2002" class="btn btn-primary py-3 px-5">GitHub</a></p>
-						</div>
-					</div>
-				</div>
-			<!-- </div> -->
-		</div>
-	</section>
+    </section>
+  </main>
 
-
-
-    <section class="ftco-section contact-section ftco-no-pb" id="contact-section">
-      <div class="container">
-      	<div class="row justify-content-center mb-5 pb-3">
-          <div class="col-md-7 heading-section text-center ftco-animate">
-            <h1 class="big big-2">Contact</h1>
-            <h2 class="mb-4">Contact Me</h2>
-            <p>Below are the details to reach out to me!</p>
-          </div>
-        </div>
-
-        <div class="row d-flex contact-info mb-5">
-          <div class="col-md-6 col-lg-3 d-flex ftco-animate">
-          	<div class="align-self-stretch box p-4 text-center">
-          		<div class="icon d-flex align-items-center justify-content-center">
-          			<span class="icon-map-signs"></span>
-          		</div>
-          		<h3 class="mb-4">Address</h3>
-	    
-				<p> <a href="https://www.google.com/maps/place/Mathura,+Uttar+Pradesh/@27.4743744,77.6841546,12z/data=!3m1!4b1!4m6!3m5!1s0x397371163d4d5205:0x4273a09defe10ea5!8m2!3d27.4924134!4d77.673673!16zL20vMDFwcng1?entry=ttu">Gurugram, Haryana, India</a></p>
-	          </div>
-          </div>
-          <div class="col-md-6 col-lg-3 d-flex ftco-animate">
-          	<div class="align-self-stretch box p-4 text-center">
-          		<div class="icon d-flex align-items-center justify-content-center">
-          			<span class="icon-phone2"></span>
-          		</div>
-          		<h3 class="mb-4">Contact Number</h3>
-	            <p><a href="tel://0101010101">+91 7078025700</a></p>
-	          </div>
-          </div>
-          <div class="col-md-6 col-lg-3 d-flex ftco-animate">
-          	<div class="align-self-stretch box p-4 text-center">
-          		<div class="icon d-flex align-items-center justify-content-center">
-          			<span class="icon-paper-plane"></span>
-          		</div>
-          		<h3 class="mb-4">Email Address</h3>
-	            <p><a href="https://mail.google.com/mail/u/0/#compose">rawatkrish2002@gmail.com</a></p>
-	          </div>
-          </div>
-          <div class="col-md-6 col-lg-3 d-flex ftco-animate">
-          	<div class="align-self-stretch box p-4 text-center">
-          		<div class="icon d-flex align-items-center justify-content-center">
-          			<span class="icon-globe"></span>
-          		</div>
-          		<h3 class="mb-4">Discord</h3>
-	            <p> <a href="https://discord.com/channels/">Join Me</a></p>
-	          </div>
-          </div>
-
-		  <div class="container">
-			<br>
-			<br>
-			<div class="row justify-content-center">
-				<div class="col-md-7 ftco-animate text-center">
-					<h2>Have a<span> Question?  </span> <a href="https://forms.gle/misAQxgTwvTqitNHA" class="btn btn-primary py-3 px-5">Click Here</a> </h2>
-				</div>
-			</div>
-				<br>
-					<ul class="ftco-footer-social list-unstyled d-flex justify-content-center align-items-center mb-0">
-					  <li class="ftco-animate normal-txt">Find me on  </li>
-					  <li class="ftco-animate"><a href="https://www.linkedin.com/in/krishan-k-rawat/"><span class="icon-linkedin"></span></a></li>  
-					  <li class="ftco-animate"><a href="https://x.com/rawatkrish_"><span class="icon-twitter"></span></a></li>
-					  <li class="ftco-animate"><a href="https://www.facebook.com/profile.php?id=100009298978574"><span class="icon-facebook"></span></a></li>
-				      <li class="ftco-animate"><a href="https://www.instagram.com/privilege_03/"><span class="icon-instagram"></span></a></li>
-					</ul>
-				<br>
-		   </div>
-   </div>
- </section>
-
-
- 
-	
-    <footer class="ftco-footer ftco-section">
-		<div class="container">
-		  <div class="row">
-			<div class="col-md-12 text-center">
-  
-			  <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-	Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-	<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-			</div>
-		  </div>
-		</div>
-	  </footer>
-
-
-  <!-- loader -->
-  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
-
-
-  <script src="js/jquery.min.js"></script>
-  <script src="js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/jquery.easing.1.3.js"></script>
-  <script src="js/jquery.waypoints.min.js"></script>
-  <script src="js/jquery.stellar.min.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/jquery.magnific-popup.min.js"></script>
-  <script src="js/aos.js"></script>
-  <script src="js/jquery.animateNumber.min.js"></script>
-  <script src="js/scrollax.min.js"></script>
-  
-  <script src="js/main.js"></script>
-    
-  </body>
+  <footer><div class="container footer-inner"><span>© <span id="year"></span> Krishan Kumar Rawat. All rights reserved.</span><span>Designed with focus on cloud, code &amp; reliability.</span></div></footer>
+  <script>
+    const nav=document.querySelector('.nav');
+    const menuBtn=document.getElementById('menuBtn');
+    const navLinks=document.getElementById('navLinks');
+    const updateNav=()=>nav.classList.toggle('scrolled',window.scrollY>24);
+    updateNav();window.addEventListener('scroll',updateNav,{passive:true});
+    menuBtn.addEventListener('click',()=>{const open=navLinks.classList.toggle('open');menuBtn.setAttribute('aria-expanded',String(open));menuBtn.textContent=open?'✕':'☰';});
+    navLinks.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{navLinks.classList.remove('open');menuBtn.setAttribute('aria-expanded','false');menuBtn.textContent='☰';}));
+    document.getElementById('year').textContent=new Date().getFullYear();
+    const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target);}}),{threshold:.12});
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+  </script>
+</body>
 </html>
-
-
-
-
-
-
-
-
-
