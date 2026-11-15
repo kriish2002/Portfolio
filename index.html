@@ -315,7 +315,22 @@
     @media(max-width:520px){.welcome-mascot{right:12px;bottom:76px;gap:8px}.mascot-avatar{width:58px;height:58px;flex-basis:58px;font-size:2rem}.mascot-bubble{font-size:.72rem;padding:13px 32px 13px 13px;max-width:calc(100vw - 92px)}}
     @media(prefers-reduced-motion:reduce){.welcome-mascot,.mascot-avatar{animation:none;opacity:1;transform:none}}
 
-  </style>
+  
+    /* Professional presenter card with spoken introduction */
+    .presenter-card{display:grid;grid-template-columns:190px 1fr;gap:22px;align-items:center;max-width:760px;margin:34px 0 0;padding:16px;border:1px solid rgba(213,173,98,.27);background:linear-gradient(135deg,rgba(23,27,32,.96),rgba(10,14,19,.94));box-shadow:0 20px 55px rgba(0,0,0,.3);border-radius:7px}
+    .presenter-photo{height:190px;position:relative;overflow:hidden;border-radius:4px;background:#171c24}
+    .presenter-photo img{width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block;filter:saturate(.82)}
+    .presenter-live{position:absolute;left:10px;bottom:10px;padding:6px 8px;background:rgba(7,10,14,.82);font:.58rem "DM Mono";letter-spacing:.12em;color:#f0d99f}
+    .presenter-live i{display:inline-block;width:6px;height:6px;margin-right:6px;border-radius:50%;background:#d5ad62}
+    .presenter-copy h2{font-size:1.25rem;line-height:1.25;letter-spacing:-.035em;margin:7px 0}
+    .presenter-copy p{font-size:.83rem;line-height:1.7;color:#b5b1a7;margin:0}
+    .presenter-actions{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-top:14px}
+    .presenter-actions .btn{padding:9px 12px;font-size:.72rem;cursor:pointer}
+    .presenter-actions button:disabled{opacity:.4;cursor:not-allowed;transform:none}
+    .presenter-caption{font:.6rem "DM Mono";color:#a9a397}
+    @media(max-width:650px){.presenter-card{grid-template-columns:1fr;gap:14px}.presenter-photo{height:220px}.presenter-copy h2{font-size:1.12rem}}
+
+</style>
 
 <style id="portfolio-polish-2026">
 :root{--bg:#090a0c;--panel:#111318;--panel2:#171a20;--line:rgba(220,184,112,.2);--text:#f5f0e5;--muted:#b0a795;--blue:#d8b36b;--cyan:#f0d79f}
@@ -337,15 +352,6 @@ a:focus-visible,button:focus-visible{outline:2px solid #f0d79f;outline-offset:4p
 <body>
 <a class="skip-link" href="#main-content">Skip to content</a>
   <button class="intro-sound" id="introSound" type="button" aria-label="Play intro sound" aria-pressed="false"><span class="sound-dot"></span><span id="soundLabel">INTRO SOUND</span></button>
-  <aside class="welcome-mascot" id="welcomeMascot" aria-label="Introduction from Krishan" role="status">
-    <div class="mascot-avatar" aria-hidden="true">👨🏻‍💻</div>
-    <div class="mascot-bubble">
-      <button class="mascot-close" id="closeMascot" type="button" aria-label="Close introduction">×</button>
-      <strong>Hey there! I’m Krishan 👋</strong>
-      I’m a DevOps &amp; Cloud Engineer with 1.5+ years of experience. I work with Azure, Terraform and Azure DevOps CI/CD, and I’m exploring Docker, Kubernetes and DevSecOps.
-    </div>
-  </aside>
-
   <div class="scroll-progress" id="scrollProgress"></div>
   <div class="network-glow glow-left"></div><div class="network-glow glow-right"></div>
 
@@ -372,6 +378,22 @@ a:focus-visible,button:focus-visible{outline:2px solid #f0d79f;outline-offset:4p
           <p class="hero-copy">I turn infrastructure into repeatable code, streamline CI/CD workflows and help teams ship with confidence. My hands-on experience is focused on <strong>Microsoft Azure, Terraform and Azure DevOps.</strong></p>
           <div class="actions"><a class="btn btn-primary" href="#projects">Explore my work ↗</a><a class="btn btn-ghost" href="resume.html" target="_blank" rel="noopener">View resume ↗</a></div>
           <div class="hero-proof"><span>Based in India</span><i></i><span>1.5+ years experience</span><i></i><span>Azure · Terraform · CI/CD</span></div>
+          <section class="presenter-card reveal" aria-label="Video-style introduction">
+            <div class="presenter-photo">
+              <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&amp;fit=crop&amp;w=700&amp;q=85" alt="Professional presenter portrait" loading="lazy">
+              <span class="presenter-live"><i></i> INTRODUCTION</span>
+            </div>
+            <div class="presenter-copy">
+              <span class="eyebrow">A QUICK INTRODUCTION</span>
+              <h2>Meet the engineer behind the projects.</h2>
+              <p>“Hi, welcome to my portfolio. I’m Krishan Kumar Rawat, a DevOps and Cloud Infrastructure Engineer with 1.5+ years of experience. I work with Microsoft Azure, Terraform and Azure DevOps CI/CD, building reliable and automated cloud infrastructure.”</p>
+              <div class="presenter-actions">
+                <button class="btn btn-primary" id="playPresenter" type="button">▶ Play introduction</button>
+                <button class="btn btn-ghost" id="stopPresenter" type="button" disabled>■ Stop</button>
+                <span class="presenter-caption" id="presenterStatus" aria-live="polite">Voice introduction · English</span>
+              </div>
+            </div>
+          </section>
         </div>
       </div><div class="hero-scroll">SCROLL TO EXPLORE ↓</div>
     </section>
@@ -485,11 +507,6 @@ a:focus-visible,button:focus-visible{outline:2px solid #f0d79f;outline-offset:4p
 
   <footer><div class="container footer-inner"><span>© <span id="year"></span> Krishan Kumar Rawat. All rights reserved.</span><span>Designed with focus on cloud, code &amp; reliability.</span></div></footer>
   <script>
-    const welcomeMascot=document.getElementById('welcomeMascot');
-    const closeMascot=document.getElementById('closeMascot');
-    if(welcomeMascot) requestAnimationFrame(()=>welcomeMascot.classList.add('show'));
-    if(closeMascot) closeMascot.addEventListener('click',()=>welcomeMascot?.remove());
-
     const nav=document.querySelector('.nav');
     const menuBtn=document.getElementById('menuBtn');
     const navLinks=document.getElementById('navLinks');
@@ -497,6 +514,30 @@ a:focus-visible,button:focus-visible{outline:2px solid #f0d79f;outline-offset:4p
     updateNav();window.addEventListener('scroll',updateNav,{passive:true});
     menuBtn.addEventListener('click',()=>{const open=navLinks.classList.toggle('open');menuBtn.setAttribute('aria-expanded',String(open));menuBtn.textContent=open?'✕':'☰';});
     navLinks.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{navLinks.classList.remove('open');menuBtn.setAttribute('aria-expanded','false');menuBtn.textContent='☰';}));
+
+    const playPresenter=document.getElementById('playPresenter');
+    const stopPresenter=document.getElementById('stopPresenter');
+    const presenterStatus=document.getElementById('presenterStatus');
+    if(playPresenter && ('speechSynthesis' in window)){
+      const introText="Hi, welcome to my portfolio. I’m Krishan Kumar Rawat, a DevOps and Cloud Infrastructure Engineer with one point five plus years of experience. I work with Microsoft Azure, Terraform and Azure DevOps C I C D, building reliable and automated cloud infrastructure.";
+      playPresenter.addEventListener('click',()=>{
+        window.speechSynthesis.cancel();
+        const utterance=new SpeechSynthesisUtterance(introText);
+        utterance.lang='en-IN';utterance.rate=.92;utterance.pitch=1;
+        const voices=window.speechSynthesis.getVoices();
+        const preferred=voices.find(v=>/^en-IN$/i.test(v.lang))||voices.find(v=>/^en-GB$/i.test(v.lang))||voices.find(v=>/^en-US$/i.test(v.lang));
+        if(preferred)utterance.voice=preferred;
+        utterance.onstart=()=>{presenterStatus.textContent='Playing introduction…';playPresenter.disabled=true;stopPresenter.disabled=false;};
+        utterance.onend=()=>{presenterStatus.textContent='Introduction complete';playPresenter.disabled=false;stopPresenter.disabled=true;};
+        utterance.onerror=()=>{presenterStatus.textContent='Voice unavailable in this browser';playPresenter.disabled=false;stopPresenter.disabled=true;};
+        window.speechSynthesis.speak(utterance);
+      });
+      stopPresenter.addEventListener('click',()=>{window.speechSynthesis.cancel();presenterStatus.textContent='Introduction stopped';playPresenter.disabled=false;stopPresenter.disabled=true;});
+    } else if(playPresenter){
+      playPresenter.disabled=true;
+      presenterStatus.textContent='Speech is not supported in this browser';
+    }
+
     document.getElementById('year').textContent=new Date().getFullYear();
     const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target);}}),{threshold:.12});
     document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
