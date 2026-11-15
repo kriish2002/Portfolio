@@ -399,9 +399,7 @@ a:focus-visible,button:focus-visible{outline:2px solid #f0d79f;outline-offset:4p
               <h2>Hey, good to have you here.</h2>
               <p>“Hey, welcome to my portfolio! I’m Krishan — a DevOps and Cloud Infrastructure Engineer with 1.5+ years of experience. I’m all about Azure, Terraform and CI/CD automation, building cloud infrastructure that’s reliable, secure and ready to scale. Have a look around and check out what I’ve been building.”</p>
               <div class="presenter-actions">
-                <button class="btn btn-primary" id="playPresenter" type="button">▶ Hear my intro</button>
-                <button class="btn btn-ghost" id="stopPresenter" type="button" disabled>■ Stop</button>
-                <span class="presenter-caption" id="presenterStatus" aria-live="polite">Indian English · Voice intro</span>
+                <span class="presenter-caption" id="presenterStatus" aria-live="polite">Indian English · Click the visual to hear again</span>
               </div>
             </div>
           </section>
@@ -526,27 +524,32 @@ a:focus-visible,button:focus-visible{outline:2px solid #f0d79f;outline-offset:4p
     menuBtn.addEventListener('click',()=>{const open=navLinks.classList.toggle('open');menuBtn.setAttribute('aria-expanded',String(open));menuBtn.textContent=open?'✕':'☰';});
     navLinks.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{navLinks.classList.remove('open');menuBtn.setAttribute('aria-expanded','false');menuBtn.textContent='☰';}));
 
-    const playPresenter=document.getElementById('playPresenter');
-    const stopPresenter=document.getElementById('stopPresenter');
+    const presenterVisual=document.querySelector('.presenter-visual');
     const presenterStatus=document.getElementById('presenterStatus');
-    if(playPresenter && ('speechSynthesis' in window)){
+    if(presenterVisual && ('speechSynthesis' in window)){
       const introText="Hey, welcome to my portfolio! I’m Krishan — a DevOps and Cloud Infrastructure Engineer with one point five plus years of experience. I’m all about Microsoft Azure, Terraform and C I C D automation, building cloud infrastructure that’s reliable, secure and ready to scale. Have a look around and check out what I’ve been building.";
-      playPresenter.addEventListener('click',()=>{
+      const playIntro=()=>{
         window.speechSynthesis.cancel();
         const utterance=new SpeechSynthesisUtterance(introText);
         utterance.lang='en-IN';utterance.rate=0.88;utterance.pitch=0.96;
         const voices=window.speechSynthesis.getVoices();
         const preferred=voices.find(v=>/^en-IN$/i.test(v.lang))||voices.find(v=>/india|indian/i.test(v.name));
         if(preferred){utterance.voice=preferred;utterance.lang=preferred.lang||'en-IN';}
-        utterance.onstart=()=>{presenterStatus.textContent='Playing introduction…';playPresenter.disabled=true;stopPresenter.disabled=false;};
-        utterance.onend=()=>{presenterStatus.textContent='Introduction complete';playPresenter.disabled=false;stopPresenter.disabled=true;};
-        utterance.onerror=()=>{presenterStatus.textContent='Voice unavailable — try Chrome or Edge';playPresenter.disabled=false;stopPresenter.disabled=true;};
+        utterance.onstart=()=>{presenterStatus.textContent='Playing introduction…';presenterVisual.classList.add('is-speaking');};
+        utterance.onend=()=>{presenterStatus.textContent='Indian English · Click the visual to hear again';presenterVisual.classList.remove('is-speaking');};
+        utterance.onerror=()=>{presenterStatus.textContent='Tap the visual to play the introduction';presenterVisual.classList.remove('is-speaking');};
         window.speechSynthesis.speak(utterance);
-      });
-      stopPresenter.addEventListener('click',()=>{window.speechSynthesis.cancel();presenterStatus.textContent='Introduction stopped';playPresenter.disabled=false;stopPresenter.disabled=true;});
-    } else if(playPresenter){
-      playPresenter.disabled=true;
-      presenterStatus.textContent='Speech is not supported in this browser';
+      };
+      presenterVisual.setAttribute('role','button');
+      presenterVisual.setAttribute('tabindex','0');
+      presenterVisual.setAttribute('aria-label','Play the portfolio introduction again');
+      presenterVisual.style.cursor='pointer';
+      presenterVisual.addEventListener('click',playIntro);
+      presenterVisual.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();playIntro();}});
+      // Attempt automatic playback once when the page opens. Browsers may block audible autoplay.
+      window.addEventListener('load',()=>{setTimeout(playIntro,700);},{once:true});
+    } else if(presenterStatus){
+      presenterStatus.textContent='Voice playback is not supported in this browser';
     }
 
     document.getElementById('year').textContent=new Date().getFullYear();
