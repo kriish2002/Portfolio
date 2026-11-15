@@ -300,6 +300,21 @@
     .intro-sound[aria-pressed="true"] .sound-dot{background:#e5c77f}
     @media(max-width:650px){.intro-sound{right:14px;bottom:14px}}
 
+  
+    /* Friendly first-visit DevOps introduction character */
+    .welcome-mascot{position:fixed;right:26px;bottom:86px;z-index:110;display:flex;align-items:flex-end;gap:12px;max-width:min(390px,calc(100vw - 32px));opacity:0;transform:translateY(18px) scale(.97);pointer-events:none;animation:mascotArrive .7s .9s cubic-bezier(.2,.8,.2,1) forwards}
+    .welcome-mascot.show{pointer-events:auto}
+    @keyframes mascotArrive{to{opacity:1;transform:translateY(0) scale(1)}}
+    .mascot-avatar{width:76px;height:76px;flex:0 0 76px;display:grid;place-items:center;border:1px solid rgba(231,195,109,.65);border-radius:50%;background:radial-gradient(circle at 35% 25%,#3a3020,#12151b 72%);box-shadow:0 10px 35px rgba(0,0,0,.4),0 0 24px rgba(214,170,80,.17);font-size:2.65rem;animation:mascotBob 3s ease-in-out infinite}
+    @keyframes mascotBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+    .mascot-bubble{position:relative;padding:16px 40px 16px 17px;border:1px solid rgba(231,195,109,.38);border-radius:13px 13px 13px 3px;background:linear-gradient(145deg,rgba(28,27,23,.98),rgba(12,15,20,.98));box-shadow:0 16px 44px rgba(0,0,0,.42);color:#d6d0c3;font-size:.78rem;line-height:1.65;backdrop-filter:blur(14px)}
+    .mascot-bubble:before{content:"";position:absolute;left:-7px;bottom:16px;width:12px;height:12px;background:#1b1b18;border-left:1px solid rgba(231,195,109,.38);border-bottom:1px solid rgba(231,195,109,.38);transform:rotate(45deg)}
+    .mascot-bubble strong{display:block;color:#f1d99f;font-size:.88rem;margin-bottom:4px}
+    .mascot-close{position:absolute;right:10px;top:8px;border:0;background:transparent;color:#b9ad94;font-size:1.1rem;cursor:pointer;padding:2px 5px}
+    .mascot-close:hover{color:#fff}
+    @media(max-width:520px){.welcome-mascot{right:12px;bottom:76px;gap:8px}.mascot-avatar{width:58px;height:58px;flex-basis:58px;font-size:2rem}.mascot-bubble{font-size:.72rem;padding:13px 32px 13px 13px;max-width:calc(100vw - 92px)}}
+    @media(prefers-reduced-motion:reduce){.welcome-mascot,.mascot-avatar{animation:none;opacity:1;transform:none}}
+
   </style>
 
 <style id="portfolio-polish-2026">
@@ -322,6 +337,14 @@ a:focus-visible,button:focus-visible{outline:2px solid #f0d79f;outline-offset:4p
 <body>
 <a class="skip-link" href="#main-content">Skip to content</a>
   <button class="intro-sound" id="introSound" type="button" aria-label="Play intro sound" aria-pressed="false"><span class="sound-dot"></span><span id="soundLabel">INTRO SOUND</span></button>
+  <aside class="welcome-mascot" id="welcomeMascot" aria-label="Introduction from Krishan" role="status">
+    <div class="mascot-avatar" aria-hidden="true">👨🏻‍💻</div>
+    <div class="mascot-bubble">
+      <button class="mascot-close" id="closeMascot" type="button" aria-label="Close introduction">×</button>
+      <strong>Hey there! I’m Krishan 👋</strong>
+      I’m a DevOps &amp; Cloud Engineer with 1.5+ years of experience. I work with Azure, Terraform and Azure DevOps CI/CD, and I’m exploring Docker, Kubernetes and DevSecOps.
+    </div>
+  </aside>
 
   <div class="scroll-progress" id="scrollProgress"></div>
   <div class="network-glow glow-left"></div><div class="network-glow glow-right"></div>
@@ -462,6 +485,11 @@ a:focus-visible,button:focus-visible{outline:2px solid #f0d79f;outline-offset:4p
 
   <footer><div class="container footer-inner"><span>© <span id="year"></span> Krishan Kumar Rawat. All rights reserved.</span><span>Designed with focus on cloud, code &amp; reliability.</span></div></footer>
   <script>
+    const welcomeMascot=document.getElementById('welcomeMascot');
+    const closeMascot=document.getElementById('closeMascot');
+    if(welcomeMascot) requestAnimationFrame(()=>welcomeMascot.classList.add('show'));
+    if(closeMascot) closeMascot.addEventListener('click',()=>welcomeMascot?.remove());
+
     const nav=document.querySelector('.nav');
     const menuBtn=document.getElementById('menuBtn');
     const navLinks=document.getElementById('navLinks');
