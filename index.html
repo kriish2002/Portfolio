@@ -534,7 +534,7 @@ a:focus-visible,button:focus-visible{outline:2px solid #f0d79f;outline-offset:4p
       playPresenter.addEventListener('click',()=>{
         window.speechSynthesis.cancel();
         const utterance=new SpeechSynthesisUtterance(introText);
-        utterance.lang='en-IN';utterance.rate=1.02;utterance.pitch=1.08;
+        utterance.lang='en-IN';utterance.rate=0.90;utterance.pitch=1.02;
         const voices=window.speechSynthesis.getVoices();
         const preferred=voices.find(v=>/^en-IN$/i.test(v.lang))||voices.find(v=>/india|indian/i.test(v.name));
         if(preferred){utterance.voice=preferred;utterance.lang=preferred.lang||'en-IN';}
