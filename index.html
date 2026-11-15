@@ -301,8 +301,26 @@
     @media(max-width:650px){.intro-sound{right:14px;bottom:14px}}
 
   </style>
+
+<style id="portfolio-polish-2026">
+:root{--bg:#090a0c;--panel:#111318;--panel2:#171a20;--line:rgba(220,184,112,.2);--text:#f5f0e5;--muted:#b0a795;--blue:#d8b36b;--cyan:#f0d79f}
+html{scroll-padding-top:96px}body{color:#f5f0e5}
+a:focus-visible,button:focus-visible{outline:2px solid #f0d79f;outline-offset:4px;border-radius:4px}
+::selection{background:rgba(216,179,107,.32);color:#fff8e8}
+.section-head p,.about-copy,.timeline-card p,.project-body p,.skill-card p,.edu-card p,.contact-panel p{color:#b8b1a3}
+.chip{border-color:rgba(216,179,107,.24);background:rgba(216,179,107,.09);color:#ead6aa}
+.project-links a{color:#e4c681}
+.project-card,.skill-card,.timeline-card,.cert-card,.edu-card,.info-item{border-color:rgba(220,184,112,.17)}
+.project-card:hover,.skill-card:hover,.cert-card:hover{border-color:rgba(230,195,123,.62);box-shadow:0 18px 42px rgba(0,0,0,.28),0 0 24px rgba(190,145,65,.08)}
+.project-art{color:#e8c77f}.nav-cta:hover,.contact-links a:hover{border-color:#e1bd72;color:#f5e5bd}
+.skip-link{position:fixed;left:16px;top:-60px;z-index:200;background:#e4c27b;color:#17130b;padding:10px 14px;border-radius:4px;font-weight:800}
+.skip-link:focus{top:12px}
+@media(max-width:650px){.section{padding:68px 0}.hero{padding-top:116px}.hero h1{font-size:clamp(2.7rem,12vw,3.4rem)}.project-body{padding:20px}.contact-panel{padding:22px}.nav-links{box-shadow:0 18px 35px rgba(0,0,0,.25)}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+</style>
 </head>
 <body>
+<a class="skip-link" href="#main-content">Skip to content</a>
   <button class="intro-sound" id="introSound" type="button" aria-label="Play intro sound" aria-pressed="false"><span class="sound-dot"></span><span id="soundLabel">INTRO SOUND</span></button>
 
   <div class="scroll-progress" id="scrollProgress"></div>
@@ -320,7 +338,7 @@
     </div>
   </header>
 
-  <main>
+  <main id="main-content">
     <section class="hero hero-network" id="home">
       <div class="container hero-grid hero-centered">
         <div class="hero-content">
@@ -356,7 +374,7 @@
           <div class="info-item"><small>Role</small><span>DevOps &amp; Cloud Infrastructure Engineer</span></div>
           <div class="info-item"><small>Domain</small><span>Cloud Infrastructure &amp; DevSecOps</span></div>
           <div class="info-item"><small>Specialization</small><span>Azure, Kubernetes &amp; Automation</span></div>
-          <div class="info-item"><small>Location</small><span>Gurugram, India</span></div>
+          <div class="info-item"><small>Preferred Location</small><span>Chennai, India</span></div>
           <div class="info-item"><small>Education</small><span>Bachelor of Technology</span></div>
           <div class="info-item"><small>Languages</small><span>English &amp; Hindi</span></div>
           <div class="info-item"><small>Cloud platforms</small><span>Azure (primary) &amp; AWS (foundational)</span></div>
@@ -400,8 +418,8 @@
         <div class="project-grid">
           <article class="project-card reveal"><div class="project-art">☸️</div><div class="project-body"><h3>AKS Deployment Pipeline with Azure DevOps</h3><p>A multi-stage pipeline that builds and pushes a Docker image to Azure Container Registry, then deploys the application to AKS using Kubernetes manifests and rollout checks.</p><div class="chips"><span class="chip">Azure Pipelines</span><span class="chip">Docker</span><span class="chip">ACR</span><span class="chip">AKS</span></div><div class="project-links"><a href="https://github.com/kriish2002/K8s-infra" target="_blank" rel="noopener">View source on GitHub ↗</a></div></div></article>
           <article class="project-card reveal"><div class="project-art">🛡️</div><div class="project-body"><h3>Azure DevSecOps Infrastructure Modules</h3><p>Terraform repository organized around reusable Azure resource modules and separate pre-production and production environment folders.</p><div class="chips"><span class="chip">Azure</span><span class="chip">Terraform</span><span class="chip">Modules</span><span class="chip">Environments</span></div><div class="project-links"><a href="https://github.com/kriish2002/azure-devsecops-Infras" target="_blank" rel="noopener">View source on GitHub ↗</a></div></div></article>
-          <article class="project-card reveal"><div class="project-art">🏗️</div><div class="project-body"><h3>Azure Infrastructure with Terraform</h3><p>Infrastructure-as-Code examples organized by Azure resources, including resource groups, virtual networks, subnets, network security groups, virtual machines and peering.</p><div class="chips"><span class="chip">Azure</span><span class="chip">Terraform</span><span class="chip">HCL</span><span class="chip">Networking</span></div><div class="project-links"><a href="https://github.com/kriish2002/Infrastructure_using_Terraform" target="_blank" rel="noopener">View source on GitHub ↗</a></div></div></article>
-          <article class="project-card reveal"><div class="project-art">🔁</div><div class="project-body"><h3>Terraform Environment & Module Structure</h3><p>Terraform project arranged with development and production environment folders and reusable modules for Azure resource groups and virtual networks.</p><div class="chips"><span class="chip">Terraform</span><span class="chip">Azure</span><span class="chip">Modules</span><span class="chip">Environments</span></div><div class="project-links"><a href="https://github.com/kriish2002/Terraform-CICD" target="_blank" rel="noopener">View source on GitHub ↗</a></div></div></article>
+          <article class="project-card reveal"><div class="project-art">🏗️</div><div class="project-body"><h3>Azure Infrastructure with Terraform</h3><p>Reusable Terraform infrastructure for Azure resource groups, VNets, subnets, NSGs, public IPs, storage and Linux virtual machines, organized into development and production environments.</p><div class="chips"><span class="chip">Azure</span><span class="chip">Terraform</span><span class="chip">HCL</span><span class="chip">Dev / Prod</span></div><div class="project-links"><a href="https://github.com/kriish2002/terraform-azure-production" target="_blank" rel="noopener">View source on GitHub ↗</a></div></div></article>
+          <article class="project-card reveal"><div class="project-art">🏢</div><div class="project-body"><h3>Enterprise Azure Landing Zone</h3><p>Hub-and-spoke Azure Landing Zone built with reusable Terraform modules and an Azure DevOps multi-stage pipeline, following Cloud Adoption Framework principles.</p><div class="chips"><span class="chip">Azure Landing Zone</span><span class="chip">Terraform</span><span class="chip">Hub &amp; Spoke</span><span class="chip">Azure DevOps</span></div><div class="project-links"><a href="https://github.com/kriish2002/azure-landing-zone-terraform" target="_blank" rel="noopener">View source on GitHub ↗</a></div></div></article>
           <article class="project-card reveal"><div class="project-art">🤖</div><div class="project-body"><h3>AI Job Agent</h3><p>Python project structured around AI components, agents, job processing, data storage, notifications and scheduled workflows.</p><div class="chips"><span class="chip">Python</span><span class="chip">AI</span><span class="chip">Automation</span></div><div class="project-links"><a href="https://github.com/kriish2002/AI-Job-Agent" target="_blank" rel="noopener">View source on GitHub ↗</a></div></div></article>
           <article class="project-card reveal"><div class="project-art">🐳</div><div class="project-body"><h3>Dockerized Flask CI/CD</h3><p>A Flask application packaged with Docker and a GitHub Actions workflow directory for automated application delivery.</p><div class="chips"><span class="chip">Python</span><span class="chip">Flask</span><span class="chip">Docker</span><span class="chip">GitHub Actions</span></div><div class="project-links"><a href="https://github.com/kriish2002/github-actions-flask" target="_blank" rel="noopener">View source on GitHub ↗</a></div></div></article>
           <article class="project-card reveal"><div class="project-art">🌐</div><div class="project-body"><h3>Kubernetes Configuration with AGIC</h3><p>Kubernetes manifests and configuration for application deployment through Ingress and Azure Application Gateway Ingress Controller.</p><div class="chips"><span class="chip">Kubernetes</span><span class="chip">Ingress</span><span class="chip">AGIC</span><span class="chip">Terraform</span></div><div class="project-links"><a href="https://github.com/kriish2002/kubernetes_configure" target="_blank" rel="noopener">View source on GitHub ↗</a></div></div></article>
@@ -433,6 +451,7 @@
             <a href="mailto:r.rawatkr@gmail.com"><span>Email</span>r.rawatkr@gmail.com</a>
             <a href="tel:+917078025700"><span>Phone</span>+91 7078025700</a>
             <a href="https://www.linkedin.com/in/krishan-k-rawat/" target="_blank" rel="noopener"><span>LinkedIn</span>Connect professionally ↗</a>
+            <a href="https://github.com/kriish2002" target="_blank" rel="noopener"><span>GitHub</span>Explore my repositories ↗</a>
             <a href="https://forms.gle/misAQxgTwvTqitNHA" target="_blank" rel="noopener"><span>Contact form</span>Have a question ↗</a>
             <a href="https://www.coursera.org/accomplishments" target="_blank" rel="noopener"><span>Coursera</span>View accomplishments ↗</a>
           </div>
